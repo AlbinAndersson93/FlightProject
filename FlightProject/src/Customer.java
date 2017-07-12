@@ -4,7 +4,7 @@ public class Customer {
 	protected String name;
 	protected String address;
 	protected String zipcode;
-	protected String city;
+	protected String city; 
 	protected String cellphone;
  
 	protected Ticket voucher;
