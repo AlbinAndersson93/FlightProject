@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Plane {
-	int seatsEconomy;
-	int seatsFirstClass;
+	static int seatsEconomy;
+	static int seatsFirstClass;
 	String name;
 	
 	
@@ -13,11 +13,11 @@ public class Plane {
 		this.seatsFirstClass = seatsFirstClass;
 		this.name = name;
 	}
-	
-	int totalNUmberOfSeats = seatsEconomy + seatsFirstClass;
-	
+		
+	static int totalNumberOfSeats = seatsEconomy + seatsFirstClass;
+		
 	public int getTotalNumberOfSeats() {
-		return totalNUmberOfSeats;
+		return totalNumberOfSeats;
 	}
 	
 	public int getSeatsEconomy() {
