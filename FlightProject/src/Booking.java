@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Booking {
 
 	Customer customer;
-	
+
 
 	private ClassType classType;
 	private static int firstClassSeat=1;
@@ -19,48 +19,52 @@ public class Booking {
 	String source="This Town";
 	String flightID="FlightID1";
 	String plane="Blue Bella";
-	
-	
+
+
 	Scanner in=new Scanner(System.in);
 	String input="";
-	
+
 
 	public Booking(Customer customer) {
 		this.customer=customer;
 		System.out.println(customer.getName() +" is here to book a flight.");
-
+		asignSeat();
+		asignMeal();
+		createTicket();
+		
 
 	}
 
-	public void asignSeat() {		//Assigning first/economy class and seat from user input
+	private void asignSeat() {		//Assigning first/economy class and seat from user input
 		System.out.println("Hello "+ customer.getName()+". Do you want to fly in first class or economy class? Enter 'First class' or 'Economy'");
-		
+
 		while(true){
 			input=in.nextLine();
-		if (input.equalsIgnoreCase("First class")){
-			this.classType= ClassType.FIRST_CLASS;
-			ticketPrice+=20000;
-			assignedSeat=firstClassSeat++;
-			System.out.println("first class it is then. you have seat #"+assignedSeat);
-			break;
-			
-	}
-		
-		else if(input.equalsIgnoreCase("economy")) {
-			classType=ClassType.ECONOMY_CLASS;
-			ticketPrice+=5000;
-			assignedSeat=economyClassSeat++;
-			System.out.println("economy class it is then. you have seat #"+assignedSeat);
-			break;
+			if (input.equalsIgnoreCase("First class")){
+				this.classType= ClassType.FIRST_CLASS;
+				ticketPrice+=20000;
+				assignedSeat=firstClassSeat++;
+				System.out.println("first class it is then. you have seat #"+assignedSeat);
+				break;
+
+			}
+
+			else if(input.equalsIgnoreCase("economy")) {
+				classType=ClassType.ECONOMY_CLASS;
+				ticketPrice+=5000;
+				assignedSeat=economyClassSeat++;
+				System.out.println("economy class it is then. you have seat #"+assignedSeat);
+				break;
+			}
+			else System.out.println("Wrong input");
+
 		}
-		else System.out.println("Wrong input");
-		
-		}
 	}
 
+	
 
 
-	public void asignMeal(){		//ask if they want meal, then run method for the class they belong to
+	private void asignMeal(){		//ask if they want meal, then run method for the class they belong to
 		System.out.println(customer.getName()+", do you want to pre-order a meal for your flight? 'yes' or 'no'");
 		while(true){
 			input=in.nextLine();
@@ -84,52 +88,52 @@ public class Booking {
 		}
 	}
 
-public void createTicket(){
-	System.out.println("new ticket added to customer for "+customer.getName());
-	Ticket newTicket=new Ticket(destination,source,Integer.toString(assignedSeat),customer.getName(), bookingID);
-	System.out.println(newTicket.toString());
-	Company.addToCompanyIncome(ticketPrice);
-	System.out.println("company now has "+Company.getCompanyIncome()+" money.");
-	//	customer.setTicket(newTicket);
-}
+	private void createTicket(){
+		System.out.println("new ticket added to customer for "+customer.getName());
+		Ticket newTicket=new Ticket(destination,source,Integer.toString(assignedSeat),customer.getName(), bookingID);
+		System.out.println(newTicket.toString());
+		Company.addToCompanyIncome(ticketPrice);
+		System.out.println("company now has "+Company.getCompanyIncome()+" money.");
+		//	customer.setTicket(newTicket);
+	}
 
-public void setWantsFood(boolean b) {
-	this.wantsFood=b;
-	System.out.println(wantsFood);
-}
-
-
-
-public boolean isWantsFood() {
-	return wantsFood;
-}
-
-
-public int getTotalPrice() {
-	return ticketPrice;
-}
-
-public void addToPrice(int price) {
-	this.ticketPrice += price;
-}
+	public void setWantsFood(boolean b) {
+		this.wantsFood=b;
+		System.out.println(wantsFood);
+	}
 
 
 
-public ClassType getClassType() {
-	return classType;
-}
-
-public int getAssignedSeat() {
-	return assignedSeat;
-}
+	public boolean isWantsFood() {
+		return wantsFood;
+	}
 
 
+	public int getTotalPrice() {
+		return ticketPrice;
+	}
 
-@Override
-public String toString() {
-	return "Booking [customer=" + customer + ", classType=" + classType + ", wantsFood=" + wantsFood + ", totalPrice="
-			+ ticketPrice + ", assignedSeat=" + assignedSeat + "]";
-}
+	public void addToPrice(int price) {
+		this.ticketPrice += price;
+	}
+
+
+
+	public ClassType getClassType() {
+		return classType;
+	}
+
+	public int getAssignedSeat() {
+		return assignedSeat;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Booking [customer=" + customer + ", classType=" + classType + ", wantsFood=" + wantsFood + ", totalPrice="
+				+ ticketPrice + ", assignedSeat=" + assignedSeat + "]";
+	}
 
 
 
