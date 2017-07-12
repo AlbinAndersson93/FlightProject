@@ -60,7 +60,7 @@ public class Customer {
 	
 	public void doBooking() {
 		
-		choose_economyPlan();
+		choose_econommyPlan();
 		
 		                                                                                                     
 	}
