@@ -14,15 +14,82 @@ public class Booking {
 	private int assignedSeat;
 
 	//fields to get from flight
-	String bookingID="ABC123";
-	String destination="That Other Town";
-	String source="This Town";
-	String flightID="FlightID1";
-	String plane="Blue Bella";
+	private String bookingID="ABC123";
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public PriceGroup getPriceGroup() {
+		return priceGroup;
+	}
+
+	public static int getFirstClassSeat() {
+		return firstClassSeat;
+	}
+
+	public static int getEconomyClassSeat() {
+		return economyClassSeat;
+	}
+
+	public int getTicketPrice() {
+		return ticketPrice;
+	}
+
+	public String getBookingID() {
+		return bookingID;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public String getSource() {
+		return source;
+	}
+
+	public String getFlightID() {
+		return flightID;
+	}
+
+	public String getPlane() {
+		return plane;
+	}
+
+	public String getDeparture() {
+		return departure;
+	}
+
+	public String getArrival() {
+		return arrival;
+	}
+
+	public Scanner getIn() {
+		return in;
+	}
+
+	public String getInput() {
+		return input;
+	}
 
 
+
+	private String destination="Indigo plateu";
+	private String source="Arlanda";
+	private String flightID="FlightID1";
+	private String plane="Blue Bella";
+	private String departure="8:00";
+	private String arrival="13:25";
+	
+	
+	
 	Scanner in=new Scanner(System.in);
 	String input="";
+
+
+	
+
+
+	
 
 
 	public Booking(Customer customer) {
@@ -90,9 +157,10 @@ public class Booking {
 
 	private void createTicket(){
 		System.out.println("new ticket added to customer for "+customer.getName());
-		Ticket newTicket=new Ticket(destination,source,Integer.toString(assignedSeat),customer.getName(), bookingID);
+		Ticket newTicket=new Ticket(this);
+//		Ticket newTicket=new Ticket(customer,destination,source,assignedSeat,customer.getName(), bookingID);
 		customer.setTicket(newTicket);
-		System.out.println("==="+customer.ticket.getTicket());
+		System.out.println("ticket ID="+customer.ticket.getTicketID());
 		Company.addToCompanyIncome(ticketPrice);
 		System.out.println("company now has "+Company.getCompanyIncome()+" money.");
 		
