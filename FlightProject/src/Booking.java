@@ -42,8 +42,8 @@ public class Booking {
 			input=in.nextLine();
 			if (input.equalsIgnoreCase("First class")){
 				this.classType= ClassType.FIRST_CLASS;
-				ticketPrice+=20000;
-				assignedSeat=firstClassSeat++;
+				ticketPrice+=20000;	//TODO:set to non-permanent
+				assignedSeat=firstClassSeat++; //TODO:set to a better list
 				System.out.println("first class it is then. you have seat #"+assignedSeat);
 				break;
 
@@ -51,8 +51,8 @@ public class Booking {
 
 			else if(input.equalsIgnoreCase("economy")) {
 				classType=ClassType.ECONOMY_CLASS;
-				ticketPrice+=5000;
-				assignedSeat=economyClassSeat++;
+				ticketPrice+=5000;//TODO:set to non-permanent
+				assignedSeat=economyClassSeat++;//TODO:set to a better list
 				System.out.println("economy class it is then. you have seat #"+assignedSeat);
 				break;
 			}
@@ -90,10 +90,11 @@ public class Booking {
 	private void createTicket(){
 		System.out.println("new ticket added to customer for "+customer.getName());
 		Ticket newTicket=new Ticket(destination,source,Integer.toString(assignedSeat),customer.getName(), bookingID);
-		System.out.println(newTicket.toString());
+		customer.setTicket(newTicket);
+		System.out.println("==="+customer.voucher.getVoucher());
 		Company.addToCompanyIncome(ticketPrice);
 		System.out.println("company now has "+Company.getCompanyIncome()+" money.");
-//			customer.setTicket(newTicket);
+		
 	}
 
 	public void setWantsFood(boolean b) {
