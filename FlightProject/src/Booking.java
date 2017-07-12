@@ -80,8 +80,7 @@ public class Booking {
 					break;
 				}
 			}else if(input.equalsIgnoreCase("no")){
-				System.out.println("No meal it is then.");
-				break;
+				System.out.println("No meal it i");
 			}else{
 				System.out.println("Wrong input, please enter 'yes' or 'no'.");
 			}
