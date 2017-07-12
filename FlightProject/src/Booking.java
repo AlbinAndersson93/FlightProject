@@ -91,7 +91,7 @@ public class Booking {
 		System.out.println("new ticket added to customer for "+customer.getName());
 		Ticket newTicket=new Ticket(destination,source,Integer.toString(assignedSeat),customer.getName(), bookingID);
 		customer.setTicket(newTicket);
-		System.out.println("==="+customer.voucher.getVoucher());
+		System.out.println("==="+customer.ticket.getTicket());
 		Company.addToCompanyIncome(ticketPrice);
 		System.out.println("company now has "+Company.getCompanyIncome()+" money.");
 		

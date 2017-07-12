@@ -9,7 +9,7 @@ public class Ticket {
 	protected String arrival;
 	
 	protected String seat;
-	protected String voucher;
+	protected String ticket;
 
 	protected Date tDate;
 	
@@ -25,7 +25,7 @@ public class Ticket {
 		this.arrival = arrival;
 		
 		this.seat = seat;
-		this.voucher = "ARN1707170900-LAX1707171800-XREF1";
+		this.ticket = "ARN1707170900-LAX1707171800-XREF1";
 
 		
 		tDate = new Date();	
@@ -73,20 +73,19 @@ public class Ticket {
 		this.seat = seat;
 	}
 
-	public String getVoucher() {
-		return voucher;
+	public String getTicket() {
+		return ticket;
 	}
 
-	public void setVoucher(String voucher) {
-		this.voucher = voucher;
-	}
+	
+	
 
 
 	
 	
 	@Override
 	public String toString(){
-		return this.getVoucher() + "\n"
+		return this.getTicket() + "\n"
 					+ "----------\n"  
 					+ this.source + " --- " + this.destination + " --- " + "\n"  
 					+ this.departure + " --- " + this.arrival + " --- " + "\n"
