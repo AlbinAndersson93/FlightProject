@@ -7,7 +7,7 @@ public class Customer {
 	protected String city;
 	protected String cellphone;
 
-	protected String voucher;
+	protected Ticket voucher;
 	
 	public Customer(String name, String address, String zipcode, String city, String cellphone) {
 		super();
@@ -58,8 +58,8 @@ public class Customer {
 		this.cellphone = cellphone;
 	}
 	
-	public void setTicket(String voucher) {
-			this.voucher = voucher;
+	public void setTicket(Ticket newTicket) {
+			this.voucher = newTicket;
 	}
 	
 	
