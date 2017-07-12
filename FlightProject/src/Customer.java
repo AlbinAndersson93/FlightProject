@@ -6,6 +6,8 @@ public class Customer {
 	protected String zipcode;
 	protected String city;
 	protected String cellphone;
+
+	protected String voucher;
 	
 	public Customer(String name, String address, String zipcode, String city, String cellphone) {
 		super();
@@ -56,29 +58,9 @@ public class Customer {
 		this.cellphone = cellphone;
 	}
 	
-	
-	
-	public void doBooking() {
-		
-		choose_econommyPlan();
-		
-		                                                                                                     
+	public void setTicket(String voucher) {
+			this.voucher = voucher;
 	}
-	
-	
-	public void doExit() {
-		
-	}
-	
-	
-	
-	public void choose_economyPlan(){
-		
-		
-	}
-	
-	
-	
 	
 	
 	@Override

@@ -1,20 +1,44 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Ticket {
-	
+	protected String source;
 	protected String destination;
-	protected String avg;
-	protected String sittplats;
-	protected String namn;
-	protected String bokningsnr;
+
+	protected String departure;
+	protected String arrival;
 	
-	public Ticket(String destination, String avg, String sittplats, String namn, String bokningsnr) {
+	protected String seat;
+	protected String voucher;
+
+	protected Date tDate;
 	
+	
+	public Ticket(String source, String destination,
+				  String departure, String arrival, 
+				  String seat){
+	
+		this.source = source;
 		this.destination = destination;
-		this.avg = avg;
-		this.sittplats = sittplats;
-		this.namn = namn;
-		this.bokningsnr = bokningsnr;
+
+		this.departure = departure;
+		this.arrival = arrival;
 		
+		this.seat = seat;
+		this.voucher = "ARN1707170900-LAX1707171800-XREF1";
+
+		
+		tDate = new Date();	
+
+		
+	}
+
+	public String getSource() {
+		return source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
 	}
 
 	public String getDestination() {
@@ -25,44 +49,48 @@ public class Ticket {
 		this.destination = destination;
 	}
 
-	public String getAvg() {
-		return avg;
+	public String getDeparture() {
+		return departure;
 	}
 
-	public void setAvg(String avg) {
-		this.avg = avg;
+	public void setDeparture(String departure) {
+		this.departure = departure;
 	}
 
-	public String getSittplats() {
-		return sittplats;
+	public String getArrival() {
+		return arrival;
 	}
 
-	public void setSittplats(String sittplats) {
-		this.sittplats = sittplats;
+	public void setArrival(String arrival) {
+		this.arrival = arrival;
 	}
 
-	public String getNamn() {
-		return namn;
+	public String getSeat() {
+		return seat;
 	}
 
-	public void setNamn(String namn) {
-		this.namn = namn;
+	public void setSeat(String seat) {
+		this.seat = seat;
 	}
 
-	public String getBokningsnr() {
-		return bokningsnr;
+	public String getVoucher() {
+		return voucher;
 	}
 
-	public void setBokningsnr(String bokningsnr) {
-		this.bokningsnr = bokningsnr;
+	public void setVoucher(String voucher) {
+		this.voucher = voucher;
 	}
+
+
+	
 	
 	@Override
 	public String toString(){
-		return this.namn + "----------" 
-					+ "----" 
-					+ this.bokningsnr + 
-					this.bokningsnr;
+		return this.getVoucher() + "\n"
+					+ "----------\n"  
+					+ this.source + " --- " + this.destination + " --- " + "\n"  
+					+ this.departure + " --- " + this.arrival + " --- " + "\n"
+					+ "Print Date: " + tDate;
 	}
 
 }
