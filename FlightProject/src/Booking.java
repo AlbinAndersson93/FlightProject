@@ -5,7 +5,7 @@ public class Booking {
 	Customer customer;
 
 
-	private ClassType classType;
+	private PriceGroup priceGroup;
 	private static int firstClassSeat=1;
 	private static int economyClassSeat=6;
 	private boolean wantsFood=false;
@@ -41,7 +41,7 @@ public class Booking {
 		while(true){
 			input=in.nextLine();
 			if (input.equalsIgnoreCase("First class")){
-				this.classType= ClassType.FIRST_CLASS;
+				priceGroup= PriceGroup.FirstClass;
 				ticketPrice+=20000;	//TODO:set to non-permanent
 				assignedSeat=firstClassSeat++; //TODO:set to a better list
 				System.out.println("first class it is then. you have seat #"+assignedSeat);
@@ -50,7 +50,7 @@ public class Booking {
 			}
 
 			else if(input.equalsIgnoreCase("economy")) {
-				classType=ClassType.ECONOMY_CLASS;
+				priceGroup=PriceGroup.Economy;
 				ticketPrice+=5000;//TODO:set to non-permanent
 				assignedSeat=economyClassSeat++;//TODO:set to a better list
 				System.out.println("economy class it is then. you have seat #"+assignedSeat);
@@ -70,7 +70,7 @@ public class Booking {
 			input=in.nextLine();
 			if(input.equalsIgnoreCase("yes") ) {
 				this.wantsFood=true;
-				if(classType.equals(ClassType.FIRST_CLASS)){
+				if(priceGroup.equals(PriceGroup.FirstClass)){
 					System.out.println("printing first class menu");
 					FoodService.FirstClassFoodService();
 					break;
@@ -119,10 +119,6 @@ public class Booking {
 
 
 
-	public ClassType getClassType() {
-		return classType;
-	}
-
 	public int getAssignedSeat() {
 		return assignedSeat;
 	}
@@ -131,7 +127,7 @@ public class Booking {
 
 	@Override
 	public String toString() {
-		return "Booking [customer=" + customer + ", classType=" + classType + ", wantsFood=" + wantsFood + ", totalPrice="
+		return "Booking [customer=" + customer + ", priceGroup=" + priceGroup+ ", wantsFood=" + wantsFood + ", totalPrice="
 				+ ticketPrice + ", assignedSeat=" + assignedSeat + "]";
 	}
 
