@@ -9,11 +9,11 @@ public class Booking {
 	private static int firstClassSeat=1;
 	private static int economyClassSeat=6;
 	private boolean wantsFood=false;
-	private int totalPrice=90;
+	private int ticketPrice=90;
 
 	private int assignedSeat;
 
-
+	//fields to get from flight
 	String bookingID="ABC123";
 	String destination="That Other Town";
 	String source="This Town";
@@ -39,7 +39,7 @@ public class Booking {
 			input=in.nextLine();
 		if (input.equalsIgnoreCase("First class")){
 			this.classType= ClassType.FIRST_CLASS;
-			totalPrice+=20000;
+			ticketPrice+=20000;
 			assignedSeat=firstClassSeat++;
 			System.out.println("first class it is then. you have seat #"+assignedSeat);
 			break;
@@ -48,7 +48,7 @@ public class Booking {
 		
 		else if(input.equalsIgnoreCase("economy")) {
 			classType=ClassType.ECONOMY_CLASS;
-			totalPrice+=5000;
+			ticketPrice+=5000;
 			assignedSeat=economyClassSeat++;
 			System.out.println("economy class it is then. you have seat #"+assignedSeat);
 			break;
@@ -65,6 +65,7 @@ public class Booking {
 		while(true){
 			input=in.nextLine();
 			if(input.equalsIgnoreCase("yes") ) {
+				this.wantsFood=true;
 				if(classType.equals(ClassType.FIRST_CLASS)){
 					System.out.println("printing first class menu");
 					FoodService.FirstClassFoodService();
@@ -86,7 +87,9 @@ public class Booking {
 public void createTicket(){
 	System.out.println("new ticket added to customer for "+customer.getName());
 	Ticket newTicket=new Ticket(destination,source,Integer.toString(assignedSeat),customer.getName(), bookingID);
-
+	System.out.println(newTicket.toString());
+	Company.addToCompanyIncome(ticketPrice);
+	System.out.println("company now has "+Company.getCompanyIncome()+" money.");
 	//	customer.setTicket(newTicket);
 }
 
@@ -103,11 +106,11 @@ public boolean isWantsFood() {
 
 
 public int getTotalPrice() {
-	return totalPrice;
+	return ticketPrice;
 }
 
 public void addToPrice(int price) {
-	this.totalPrice += price;
+	this.ticketPrice += price;
 }
 
 
@@ -125,7 +128,7 @@ public int getAssignedSeat() {
 @Override
 public String toString() {
 	return "Booking [customer=" + customer + ", classType=" + classType + ", wantsFood=" + wantsFood + ", totalPrice="
-			+ totalPrice + ", assignedSeat=" + assignedSeat + "]";
+			+ ticketPrice + ", assignedSeat=" + assignedSeat + "]";
 }
 
 

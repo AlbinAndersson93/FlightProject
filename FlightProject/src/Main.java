@@ -10,20 +10,20 @@ public class Main {
 	
 		b1.asignSeat();
 		b1.asignMeal();
-		b1.setWantsFood(true);
-	
 		b1.createTicket();
 		System.out.println(b1.getTotalPrice());
 		
 		Booking b2=new Booking(c2);
 		
 		b2.asignSeat();
-		
+		b2.asignMeal();
+		b2.createTicket();
 		b2.setWantsFood(false);
 		
 		Booking b3=new Booking(c3);
 		b3.asignSeat();
-		
+		b3.asignMeal();
+		b3.createTicket();
 		b3.setWantsFood(false);
 		
 		
