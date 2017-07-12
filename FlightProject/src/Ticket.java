@@ -7,29 +7,15 @@ public class Ticket {
 
 	protected String departure;
 	protected String arrival;
-	private Booking booking;
+
 	protected int seat;
 	protected String ticketID;
 	private Customer customer;
 	private char mealChar; //for ticketID
-	protected Date tDate;
+
 	private int priceGroupInt; //for ticketID
 		//change to take values from a booking
-	public Ticket(Customer customer,String source, String destination,
-				  String departure, String arrival, 
-				  int seat){
-	
-		this.source = source;
-		this.destination = destination;
 
-		this.departure = departure;
-		this.arrival = arrival;
-		this.customer=customer;
-		this.seat = seat;
-	
-		tDate = new Date();	
-
-	}
 
 	public Ticket(Booking booking2) {
 	
@@ -64,7 +50,7 @@ public class Ticket {
 		return arrival;
 	}
 
-	public String getSeat() {
+	public int getSeat() {
 		return seat;
 	}
 
@@ -83,8 +69,7 @@ public class Ticket {
 		return this.getTicketID() + "\n"
 					+ "----------\n"  
 					+ this.source + " --- " + this.destination + " --- " + "\n"  
-					+ this.departure + " --- " + this.arrival + " --- " + "\n"
-					+ "Print Date: " + tDate;
+					+ this.departure + " --- " + this.arrival + " --- " + "\n";
 	}
 
 }
