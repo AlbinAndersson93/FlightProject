@@ -7,7 +7,7 @@ public class Customer {
 	protected String city;
 	protected String cellphone;
  
-	protected String voucher;
+	protected Ticket voucher;
 	
 	public Customer(String name, String address, String zipcode, String city, String cellphone) {
 		super();
@@ -22,29 +22,44 @@ public class Customer {
 		return name;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public String getAddress() {
 		return address;
 	}
 
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
 	public String getZipcode() {
 		return zipcode;
 	}
 
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
 
 	public String getCity() {
 		return city;
 	}
 
+	public void setCity(String city) {
+		this.city = city;
+	}
 
 	public String getCellphone() {
 		return cellphone;
 	}
 
+	public void setCellphone(String cellphone) {
+		this.cellphone = cellphone;
+	}
 	
-	public void setTicket(String voucher) {
-			this.voucher = voucher;
+	public void setTicket(Ticket newTicket) {
+			this.voucher = newTicket;
 	}
 	
 	
@@ -55,4 +70,5 @@ public class Customer {
 	
 	
 	
+}
 }

@@ -94,7 +94,7 @@ public class Booking {
 		System.out.println(newTicket.toString());
 		Company.addToCompanyIncome(ticketPrice);
 		System.out.println("company now has "+Company.getCompanyIncome()+" money.");
-		//	customer.setTicket(newTicket);
+//			customer.setTicket(newTicket);
 	}
 
 	public void setWantsFood(boolean b) {
