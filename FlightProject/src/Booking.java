@@ -10,7 +10,7 @@ public class Booking {
 
 
 	private boolean wantsFood=false;
-	private int totalPrice=0;
+	private int totalPrice=90;
 
 	private int assignedSeat;
 
