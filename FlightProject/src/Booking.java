@@ -1,33 +1,39 @@
 import java.util.Scanner;
-
+//take customer, check if economy/firstclass. asign seat at random, add price, check if wants meal,
 public class Booking {
 
-	private String customer;
+	Customer customer;
+	
 
 	private ClassType classType;
 	private static int firstClassSeat=1;
 	private static int economyClassSeat=6;
-
-
 	private boolean wantsFood=false;
 	private int totalPrice=90;
 
 	private int assignedSeat;
 
 
+	String bookingID="ABC123";
+	String destination="That Other Town";
+	String source="This Town";
+	String flightID="FlightID1";
+	String plane="Blue Bella";
+	
+	
 	Scanner in=new Scanner(System.in);
 	String input="";
 	
 
-	public Booking(String customer) {
+	public Booking(Customer customer) {
 		this.customer=customer;
-		System.out.println(customer +" added");
+		System.out.println(customer.getName() +" is here to book a flight.");
 
 
 	}
 
 	public void asignSeat() {		//Assigning first/economy class and seat from user input
-		System.out.println("Hello "+ customer+". Do you want to fly in first class or economy class? Enter 'First class' or 'Economy'");
+		System.out.println("Hello "+ customer.getName()+". Do you want to fly in first class or economy class? Enter 'First class' or 'Economy'");
 		
 		while(true){
 			input=in.nextLine();
@@ -55,7 +61,7 @@ public class Booking {
 
 
 	public void asignMeal(){		//ask if they want meal, then run method for the class they belong to
-		System.out.println(customer+", do you want to pre-order a meal for your flight? 'yes' or 'no'");
+		System.out.println(customer.getName()+", do you want to pre-order a meal for your flight? 'yes' or 'no'");
 		while(true){
 			input=in.nextLine();
 			if(input.equalsIgnoreCase("yes") ) {
@@ -77,12 +83,18 @@ public class Booking {
 		}
 	}
 
+public void createTicket(){
+	System.out.println("new ticket added to customer for "+customer.getName());
+	Ticket newTicket=new Ticket(destination,source,Integer.toString(assignedSeat),customer.getName(), bookingID);
 
+	//	customer.setTicket(newTicket);
+}
 
 public void setWantsFood(boolean b) {
 	this.wantsFood=b;
 	System.out.println(wantsFood);
 }
+
 
 
 public boolean isWantsFood() {
@@ -98,9 +110,7 @@ public void addToPrice(int price) {
 	this.totalPrice += price;
 }
 
-public String getCustomer() {
-	return customer;
-}
+
 
 public ClassType getClassType() {
 	return classType;
@@ -126,5 +136,5 @@ public String toString() {
 
 
 
-//take customer, check if economy/firstclass. asign seat at random, add price, check if wants meal,
+
 }
