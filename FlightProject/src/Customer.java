@@ -6,7 +6,7 @@ public class Customer {
 	protected String zipcode;
 	protected String city;
 	protected String cellphone;
-
+ 
 	protected String voucher;
 	
 	public Customer(String name, String address, String zipcode, String city, String cellphone) {
