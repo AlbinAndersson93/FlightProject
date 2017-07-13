@@ -10,7 +10,19 @@ public class Booking {
 	private static int firstClassSeat=1;
 	private static int economyClassSeat=6;
 	private boolean wantsFood=false;
-	private int ticketPrice=90;
+	private int ticketPrice=0;
+	
+	private String destination="Indigo plateu";
+	private String source="Arlanda";
+	private String flightID="FlightID1";
+	private String plane="Blue Bella";
+	private String departure="8:00";
+	private String arrival="13:25";
+	
+	
+	
+	Scanner in=new Scanner(System.in);
+	String input="";
 
 	private int assignedSeat;
 
@@ -74,17 +86,6 @@ public class Booking {
 
 
 
-	private String destination="Indigo plateu";
-	private String source="Arlanda";
-	private String flightID="FlightID1";
-	private String plane="Blue Bella";
-	private String departure="8:00";
-	private String arrival="13:25";
-	
-	
-	
-	Scanner in=new Scanner(System.in);
-	String input="";
 
 
 	
@@ -110,7 +111,7 @@ public class Booking {
 			input=in.nextLine();
 			if (input.equalsIgnoreCase("First class")){
 				priceGroup= PriceGroup.FirstClass;
-				ticketPrice+=priceGroup.getPrice();	//TODO:set to non-permanent
+				ticketPrice+=priceGroup.getPrice();	
 				assignedSeat=firstClassSeat++; //TODO:set to a better list
 				System.out.println("first class it is then. you have seat #"+assignedSeat);
 				break;
@@ -119,7 +120,7 @@ public class Booking {
 
 			else if(input.equalsIgnoreCase("economy")) {
 				priceGroup=PriceGroup.Economy;
-				ticketPrice+=priceGroup.getPrice();//TODO:set to non-permanent
+				ticketPrice+=priceGroup.getPrice();
 				assignedSeat=economyClassSeat++;//TODO:set to a better list
 				System.out.println("economy class it is then. you have seat #"+assignedSeat);
 				break;

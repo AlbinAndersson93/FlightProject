@@ -68,7 +68,7 @@ public class Flight {
 		for (int i = 0; i < nrOfSeatsEconomy; i++){
 			if(!seatListEconomy[i].isTaken()) nrOfFreeSeatsEconomy++;
 		}
-		seatListEconomy 
+//		seatListEconomy 
 		
 		
 	}
