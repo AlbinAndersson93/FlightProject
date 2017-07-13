@@ -8,13 +8,13 @@ public class Booking {
 	Customer customer;
 
 
+
 	private PriceGroup priceGroup;
-	private static int firstClassSeat=1;
-	private static int economyClassSeat=6;
+
 	private boolean wantsFood=false;
 	private int ticketPrice=0;
 
-	
+
 
 	private Flight flight; 
 
@@ -25,7 +25,6 @@ public class Booking {
 	private int assignedSeat;
 
 	//fields to get from flight
-	private String bookingID="ABC123";
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -34,25 +33,21 @@ public class Booking {
 		return priceGroup;
 	}
 
-	public static int getFirstClassSeat() {
-		return firstClassSeat;
-	}
 
-	public static int getEconomyClassSeat() {
-		return economyClassSeat;
-	}
 
 	public int getTicketPrice() {
 		return ticketPrice;
 	}
 
-	public String getBookingID() {
-		return bookingID;
+
+
+
+
+	public static void printFlights(){
+		System.out.println("Currently we have the following flights planed:");
+		Flight.flightList.forEach(s->{System.out.println(s.toString());});
+
 	}
-
-
-
-
 
 
 
@@ -86,17 +81,20 @@ public class Booking {
 
 
 
-	public Booking(Customer customer, Flight flight){
+	public Booking(Customer customer){
+		System.out.println("Which flight do you want to take?");
+		input=in.nextLine();
+		flight=Flight.flightList.stream().filter(s->s.getFlightID()==Integer.parseInt(input)).findFirst().get();
 
-		if(flight.destination.equals("")) System.out.println("Error! Flight route missing!");
-		else{
-			this.customer=customer;
-			this.flight=flight;
-			System.out.println(customer.getName() +" is here to book a flight to "+flight.destination+".");
-			asignSeat();
-			asignMeal();
-			createTicket();
-		}
+
+		
+		this.customer=customer;
+	
+		System.out.println(customer.getName() +" is here to book a flight to "+flight.destination+".");
+		asignSeat();
+		asignMeal();
+		createTicket();
+
 	}
 
 
@@ -110,14 +108,14 @@ public class Booking {
 			}
 
 			else if(input.equalsIgnoreCase("economy")) {
-					bookSeat(PriceGroup.Economy);
+				bookSeat(PriceGroup.Economy);
 				break;
 
 			}
 			else System.out.println("Wrong input");
 
 		}
-		
+
 	}
 
 	private void bookSeat(PriceGroup priceGroup){
@@ -137,7 +135,7 @@ public class Booking {
 					bookSeat(PriceGroup.Economy);
 				}
 			}else{}
-		
+
 		}
 	}
 
@@ -147,7 +145,7 @@ public class Booking {
 		System.out.println(customer.getName()+", do you want to pre-order a meal for your flight? 'yes' or 'no'");
 		while(true){
 			input=in.nextLine();
-			
+
 			if(input.equalsIgnoreCase("yes") ) {
 				this.wantsFood=true;
 				if(priceGroup.equals(PriceGroup.FirstClass)){

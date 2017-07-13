@@ -1,6 +1,8 @@
 //Gabriella
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+
 
 public class Flight {
 
@@ -18,6 +20,8 @@ public class Flight {
 	int nrOfFreeSeatsFirstClass;
 	Seat[] seatListEconomy;
 	Seat[] seatListFirstClass;
+	
+	static ArrayList<Flight> flightList=new ArrayList<>();
 	ArrayList<Seat> seatArray=new ArrayList<>();
 	{
 		for (int i=0;i<5;i++){
@@ -41,12 +45,18 @@ public class Flight {
 		this.plane = plane;
 		nrOfSeatsEconomy = plane.getSeatsEconomy();
 		nrOfSeatsFirstClass = plane.getSeatsFirstClass();
+		flightList.add(this);
 
 		seatListEconomy = new Seat[nrOfSeatsEconomy];
 		seatListFirstClass = new Seat[nrOfSeatsFirstClass];
 
 
 
+	}
+
+	@Override
+	public String toString() {
+		return "Flight "+flightID + "[ source=" + source + ", destination=" + destination+"] departureTime=" + departureTime + ", arrivalTime=" + arrivalTime + ".";
 	}
 
 	public void newFlight(String source, String destrinatin, LocalDateTime departureTime,LocalDateTime arrivalTime){

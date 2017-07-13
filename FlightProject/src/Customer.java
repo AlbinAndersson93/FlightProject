@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class Customer {
 
@@ -8,14 +9,17 @@ public class Customer {
 	protected String cellphone;
  
 	protected Ticket ticket;
+	Scanner in=new Scanner(System.in);
+	String input="";
+
+	public Customer() {
+		System.out.print("Welcome! Enter your name: ");
+		input=in.nextLine();
+		this.name=input;
+		System.out.print("And your phonenumber: ");
+		input=in.nextLine();
+		this.cellphone=input;
 	
-	public Customer(String name, String address, String zipcode, String city, String cellphone) {
-		super();
-		this.name = name;
-		this.address = address;
-		this.zipcode = zipcode;
-		this.city = city;
-		this.cellphone = cellphone;
 	}
 //David
 	public String getName() {
