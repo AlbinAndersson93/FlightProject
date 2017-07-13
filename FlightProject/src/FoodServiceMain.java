@@ -6,7 +6,7 @@ public class FoodServiceMain {
 		
 		FoodService fs = new FoodService();
 		fs.orderFood();
-		fs.start();
+//		fs.start();
 //		EconomyClassFoods ecoFood = new EconomyClassFoods();
 //		
 //		int foodNumber = 1;

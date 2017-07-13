@@ -9,9 +9,9 @@ public class FoodService {
 	ArrayList<FoodItem> orderList = new ArrayList<FoodItem>();
 
 	public double totalFoodPrice;
+	static boolean foodOrdering = true;
 //	public static double runningTotal;
 //	private static double foodItemPrice;
-//	static boolean foodOrdering = true;
 	
 	
 	static Scanner sc = new Scanner(System.in);
@@ -20,18 +20,22 @@ public class FoodService {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	// The total price of the food order
+	public void TotalFoodPrice() {
+		totalFoodPrice = orderList.stream().mapToDouble(foodPrice -> foodPrice.getPrice()).sum();
+		System.out.println("Total Food Price: " + totalFoodPrice + "(SEK).");
+	}
 
 	public static void FirstClassFoodService() {
 		System.out.println("You have chosen FIRST Class.\nStart by Choosing Appetizer.");
-
-		
 	}
 
 	public static void EconomyClassFoodService() {
+		
 	}
 	
-	
-	public ArrayList<FoodItem> OrderAppetizer() {
+	public ArrayList<FoodItem> OrderEcoAppetizer() {
 		EconomyClassFoods foodItemList = new EconomyClassFoods();
 		System.out.println("Choose the number from the list");
 		foodItemList.appetizer.stream().forEach(x -> System.out.println(foodItemList.appetizer.indexOf(x) + ": " + x));
@@ -39,8 +43,9 @@ public class FoodService {
 		int choice = sc.nextInt();
 		if(choice <= foodItemList.appetizer.size()-1){
 			orderList.add(foodItemList.getAppetizer().get(choice));
-			orderList.forEach(food -> System.out.println(food.getName() + " " + food.getPrice() + ":- Is in the list" ));
-
+			orderList.forEach(food -> System.out.println(food.getName() + " " + food.getPrice() + "(SEK)." ));
+			TotalFoodPrice();			
+			
 		}
 		else if (choice >= foodItemList.appetizer.size()-1) {
 			System.out.println("Wrong Choice!");
@@ -52,15 +57,16 @@ public class FoodService {
 	    }
 		return orderList;
 	}
-	public ArrayList<FoodItem> OrderMainCource() {
+	public ArrayList<FoodItem> OrderEcoMainCource() {
 		EconomyClassFoods foodItemList = new EconomyClassFoods();
 		System.out.println("Choose the number from the list");
 		foodItemList.mainCourse.stream().forEach(x -> System.out.println(foodItemList.mainCourse.indexOf(x) + ": " + x));
-
+		
 		int choice = sc.nextInt();
 		if(choice <= foodItemList.mainCourse.size()-1){
 			orderList.add(foodItemList.getMainCourse().get(choice));
-			orderList.forEach(food -> System.out.println(food.getName() + " " + food.getPrice() + ":- Is in the list" ));
+			orderList.forEach(food -> System.out.println(food.getName() + " " + food.getPrice() + "(SEK)." ));
+			TotalFoodPrice();
 		}
 		else if (choice >= foodItemList.mainCourse.size()-1) {
 			System.out.println("Wrong Choice!");
@@ -73,15 +79,16 @@ public class FoodService {
 		return orderList;
 	}
 	
-	public ArrayList<FoodItem> KidsMeals() {
+	public ArrayList<FoodItem> OrderEcoKidsMeals() {
 		EconomyClassFoods foodItemList = new EconomyClassFoods();
 		System.out.println("Choose the number from the list");
 		foodItemList.kidsMeals.stream().forEach(x -> System.out.println(foodItemList.kidsMeals.indexOf(x) + ": " + x));
-
+		
 		int choice = sc.nextInt();
 		if(choice <= foodItemList.kidsMeals.size()-1){
 			orderList.add(foodItemList.getKidsMeals().get(choice));
-			orderList.forEach(food -> System.out.println(food.getName() + " " + food.getPrice() + ":- Is in the list" ));
+			orderList.forEach(food -> System.out.println(food.getName() + " " + food.getPrice() + "(SEK)." ));
+			TotalFoodPrice();
 		}
 		else if (choice >= foodItemList.kidsMeals.size()-1) {
 			System.out.println("Wrong Choice!");
@@ -93,30 +100,163 @@ public class FoodService {
 	    }
 		return orderList;
 	}
-	public ArrayList<FoodItem> orderFood() {
+	
+	public ArrayList<FoodItem> OrderEcoDesserts() {
+		EconomyClassFoods foodItemList = new EconomyClassFoods();
+		System.out.println("Choose the number from the list");
+		foodItemList.desserts.stream().forEach(x -> System.out.println(foodItemList.desserts.indexOf(x) + ": " + x));
+
+		int choice = sc.nextInt();
+		if(choice <= foodItemList.desserts.size()-1){
+			orderList.add(foodItemList.getDesserts().get(choice));
+			orderList.forEach(food -> System.out.println(food.getName() + " " + food.getPrice() + "(SEK)." ));
+			TotalFoodPrice();
+		}
+		else if (choice >= foodItemList.desserts.size()-1) {
+			System.out.println("Wrong Choice!");
+		}
 		
-		System.out.println("Choose the number for the Menu:\n1. Appetizer\n2. Main Course"
-				+ "\n3. Kids Meals\n4. Desserts\n5. Drinks\n6. Sandwich"
-				+ "\n7. Finish with Food Order\n0. Cancel Food Order");
+		try {
+			orderFood();
+	    } catch (Exception e) {
+	    }
+		return orderList;
+	}
+	
+	public ArrayList<FoodItem> OrderEcoDrinks() {
+		EconomyClassFoods foodItemList = new EconomyClassFoods();
+		System.out.println("Choose the number from the list");
+		foodItemList.drinks.stream().forEach(x -> System.out.println(foodItemList.drinks.indexOf(x) + ": " + x));
+
+		int choice = sc.nextInt();
+		if(choice <= foodItemList.drinks.size()-1){
+			orderList.add(foodItemList.getDrinks().get(choice));
+			orderList.forEach(food -> System.out.println(food.getName() + " " + food.getPrice() + "(SEK)." ));
+			TotalFoodPrice();
+		}
+		else if (choice >= foodItemList.drinks.size()-1) {
+			System.out.println("Wrong Choice!");
+		}
+		
+		try {
+			orderFood();
+	    } catch (Exception e) {
+	    }
+		return orderList;
+	}
+	
+	
+	public ArrayList<FoodItem> OrderEcoSandwich() {
+		EconomyClassFoods foodItemList = new EconomyClassFoods();
+		System.out.println("Choose the number from the list");
+		foodItemList.sandwich.stream().forEach(x -> System.out.println(foodItemList.sandwich.indexOf(x) + ": " + x));
+
+		int choice = sc.nextInt();
+		if(choice <= foodItemList.sandwich.size()-1){
+			orderList.add(foodItemList.getSandwich().get(choice));
+			orderList.forEach(food -> System.out.println(food.getName() + " " + food.getPrice() + "(SEK)." ));
+			TotalFoodPrice();
+		}
+		else if (choice >= foodItemList.sandwich.size()-1) {
+			System.out.println("Wrong Choice!");
+		}
+		
+		try {
+			orderFood();
+	    } catch (Exception e) {
+	    }
+		return orderList;
+	}
+	
+	public ArrayList<FoodItem> OrderEcoSnacks() {
+		EconomyClassFoods foodItemList = new EconomyClassFoods();
+		System.out.println("Choose the number from the list");
+		foodItemList.snacks.stream().forEach(x -> System.out.println(foodItemList.snacks.indexOf(x) + ": " + x));
+
+		int choice = sc.nextInt();
+		if(choice <= foodItemList.snacks.size()-1){
+			orderList.add(foodItemList.getSnacks().get(choice));
+			orderList.forEach(food -> System.out.println(food.getName() + " " + food.getPrice() + "(SEK)." ));
+			TotalFoodPrice();
+		}
+		else if (choice >= foodItemList.snacks.size()-1) {
+			System.out.println("Wrong Choice!");
+		}
+		
+		try {
+			orderFood();
+	    } catch (Exception e) {
+	    }
+		return orderList;
+	}
+	
+	public ArrayList<FoodItem> EmptyOrder() {
+		orderList.removeAll(orderList);
+		System.out.println("Now your Food Order is EMPTY.");
+		orderList.forEach(food -> System.out.println(food.getName() + " " + food.getPrice() + "(SEK)." ));
+		try {
+			orderFood();
+	    } catch (Exception e) {
+	    }
+		return orderList;
+	}
+	
+	// 9. Finish! Order 
+	public void OrderEcoDone(){
+	    foodOrdering = false;
+	    orderList.forEach(food -> System.out.println(food.getName() + " " + food.getPrice() + "(SEK)." ));
+	    System.out.println("***********************************************"
+	    		+ "\nYour TOTAL food order price is: " + totalFoodPrice + "(SEK).");
+	    System.out.println("***********************************************"
+	    		+ "\nWe hope you will enjoy your meal on the flight!\nThank you for flying with us!"
+	    		+ "\n***********************************************");
+	}
+	
+	public void orderFood() {
+		
+		FoodMenu.flightMenu();//Prints Food Menu 
 		int input = sc.nextInt();
 	
-		while (true) {
+		while (foodOrdering) {
 			switch (input){
 			case 1: {
 
-				OrderAppetizer();
+				OrderEcoAppetizer();
 				break;
 				
 			}
 			case 2: {
-				OrderMainCource();
+				OrderEcoMainCource();
 				break;
 			}
 			case 3: {
-				KidsMeals();
+				OrderEcoKidsMeals();
 				break;
 			}
-			
+			case 4: {
+				OrderEcoDesserts();
+				break;
+			}
+			case 5: {
+				OrderEcoDrinks();
+				break;
+			}
+			case 6: {
+				OrderEcoSandwich();
+				break;
+			}
+			case 7: {
+				OrderEcoSnacks();
+				break;
+			}
+			case 8: {
+				EmptyOrder();
+				break;
+			}
+			case 9: {
+				OrderEcoDone();
+				break;
+			}
 			case 0: {
 				
 				break;
@@ -130,62 +270,4 @@ public class FoodService {
 		}
 		
 	}
-
-	public void start() {
-		System.out.println("Choose your Reservation class by respective number. \n1. First Class. \n2. Economy Class.");
-		
-		while(true){
-			
-			//Take Input
-			int input = sc.nextInt();
-			
-			//Check Input
-			switch (input) {
-			
-			case 1: {
-				
-				FirstClassFoodService();
-				break;
-			}
-			
-			case 2: {
-				
-				EconomyClassFoodService();
-				break;
-			}
-			
-			case 3: {
-				
-				
-				break;
-			}
-			
-			default: {
-				
-				break;
-			}
-			}
-		}
-	}
-	
 }
-
-
-//System.out.println("Do you want Appetizer, enter '1' for yes or '2' for no.");
-//EconomyClassFoods foodItemList = new EconomyClassFoods();
-//
-//while (true) {
-//	
-//	int input = sc.nextInt();
-//
-//	if(input == 1) {
-//		System.out.println("Choose the number from the list");
-//		foodItemList.appetizer.stream().forEach(x -> System.out.println(foodItemList.appetizer.indexOf(x) + ": " + x));
-//		int choice = sc.nextInt();
-//		orderList.add(foodItemList.getAppetizer().get(choice));
-//		
-//		orderList.forEach(food -> System.out.println(food.getName() + " Is in the list" ));
-//		
-//		return orderList;
-//		
-//}}

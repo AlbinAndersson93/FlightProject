@@ -99,7 +99,7 @@ public class EconomyClassFoods {
 
 	private void createKidsMeals() {
 		kidsMeals.add(new FoodItem("Chees Burger", 65.00));
-		kidsMeals.add(new FoodItem("Macaroni Cheese & Veg", 75));
+		kidsMeals.add(new FoodItem("Macaroni Cheese & Veg", 75.00));
 		
 	}
 
@@ -115,19 +115,19 @@ public class EconomyClassFoods {
 	}
 
 	private void createDrinks() {
-		drinks.add(new FoodItem("Fanta", 35));
-		drinks.add(new FoodItem("Tetley Tea", 25));
+		drinks.add(new FoodItem("Fanta", 35.00));
+		drinks.add(new FoodItem("Tetley Tea", 25.00));
 		drinks.add(new FoodItem("Starbucks VIA Coffee", 28.50));
 		drinks.add(new FoodItem("Heineken (33m.)", 65.00));
-		drinks.add(new FoodItem("Cook", 35));
+		drinks.add(new FoodItem("Cook", 35.00));
 		drinks.add(new FoodItem("Umbala (Red Win, 33ml)", 87.50));
-		drinks.add(new FoodItem("Gin & Tonic", 125));
+		drinks.add(new FoodItem("Gin & Tonic", 125.00));
 	}
 
 	private void createMainCourse() {
-		mainCourse.add(new FoodItem("Lasagna (Meat & Ricotta)", 300));
-		mainCourse.add(new FoodItem("Giant Burger", 250));
-		mainCourse.add(new FoodItem("Macaroni with chicken", 250));
+		mainCourse.add(new FoodItem("Lasagna (Meat & Ricotta)", 300.00));
+		mainCourse.add(new FoodItem("Giant Burger", 250.00));
+		mainCourse.add(new FoodItem("Macaroni with chicken", 250.00));
 	}
 
 	
