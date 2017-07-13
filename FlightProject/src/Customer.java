@@ -17,7 +17,7 @@ public class Customer {
 		this.city = city;
 		this.cellphone = cellphone;
 	}
-
+//David
 	public String getName() {
 		return name;
 	}

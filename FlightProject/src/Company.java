@@ -1,4 +1,4 @@
-
+//Albin
 public class Company {
 	private static int companyIncome;
 

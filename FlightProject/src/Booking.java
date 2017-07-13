@@ -1,3 +1,4 @@
+//Albin
 import java.util.Scanner;
 //take customer, check if economy/firstclass. asign seat at random, add price, check if wants meal,
 public class Booking {
