@@ -13,17 +13,17 @@ public class Main {
 		
 		Customer c1=new Customer("Melvin", "Tummy Street 11", "13232", "Nacka", "123123123");
 		Customer c2=new Customer("Saga", "This Street 11", "13232", "Nacka", "123123123");
-//		Customer c3=new Customer("Johan", "That Other Street 11", "13232", "Nacka", "123123123");		
+		Customer c3=new Customer("Johan", "That Other Street 11", "13232", "Nacka", "123123123");		
 //	
-//		Customer c4=new Customer("Johan", "That Other Street 11", "13232", "Nacka", "123123123");		
-//		Customer c5=new Customer("Saga", "This Street 11", "13232", "Nacka", "123123123");
-//		Customer c6=new Customer("Johan", "That Other Street 11", "13232", "Nacka", "123123123");		
+		Customer c4=new Customer("Johan", "That Other Street 11", "13232", "Nacka", "123123123");		
+		Customer c5=new Customer("Saga", "This Street 11", "13232", "Nacka", "123123123");
+		Customer c6=new Customer("Johan", "That Other Street 11", "13232", "Nacka", "123123123");		
 //		Customer c7=new Customer("Saga", "This Street 11", "13232", "Nacka", "123123123");
 //		Customer c8=new Customer("Johan", "That Other Street 11", "13232", "Nacka", "123123123");
 
 		
 		
-		
+	
 
 		
 		
@@ -32,17 +32,21 @@ public class Main {
 
 		
 		//To create a new flight - clear the old seat list
-		new Booking(c1, f1);		
-		new Booking(c2,f2);		
-//		Booking b3=new Booking(c3);
-//		Booking b4=new Booking(c4);
-//		Booking b5=new Booking(c5);
-//		Booking b6=new Booking(c6);
-//		Booking b7=new Booking(c7);
-//		Booking b8=new Booking(c8);
+		new Booking(c1, f1);	
+		
+		new Booking(c2,f1);		
+		
+		new Booking(c3,f1);
+		f1.removeCustomerFromSeat(c2);
+		f1.removeCustomerFromSeat(c3);
+		new Booking(c4,f1);
+		new Booking(c5,f1);
+		new Booking(c6,f1);
+//		Booking b7=new Booking(c7,f1);
+//		Booking b8=new Booking(c8,f1);
 		
 		f1.seatArray.forEach(s->{System.out.println(s);});
-		f2.seatArray.forEach(s->{System.out.println(s);});
+
 		
 		
 

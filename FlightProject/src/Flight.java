@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Flight {
 
-	
+
 	//fields
 	int flightID;
 	String source;
@@ -27,9 +27,9 @@ public class Flight {
 			seatArray.add(new Seat(i+1, PriceGroup.Economy));		
 		}
 	}
-	
-	
-	
+
+
+
 	//constructor
 	public Flight(int flightID, String source, String destination, LocalDateTime departureTime, LocalDateTime arrivalTime, Plane plane) {
 
@@ -41,18 +41,44 @@ public class Flight {
 		this.plane = plane;
 		nrOfSeatsEconomy = plane.getSeatsEconomy();
 		nrOfSeatsFirstClass = plane.getSeatsFirstClass();
-		
+
 		seatListEconomy = new Seat[nrOfSeatsEconomy];
 		seatListFirstClass = new Seat[nrOfSeatsFirstClass];
-		
-		
-	
+
+
+
 	}
+
+	public void newFlight(String source, String destrinatin, LocalDateTime departureTime,LocalDateTime arrivalTime){
+		this.source = source;
+		this.destination = destrinatin;
+		this.departureTime = departureTime;
+		this.arrivalTime = arrivalTime;
+		System.out.println(plane.getName()+" got a new destination to fly from "+source+" at "+destrinatin+" to "+departureTime+" arriving at "+arrivalTime+"." );
+		for (Seat s:seatArray){
+			removeCustomerFromSeat(s.getCustomer());
+		}
+
+	}
+	public void removeCustomerFromSeat(Customer customer) {
+
+		for (Seat s:seatArray){
+			try{if(s.getCustomer().equals(customer)){
+				s.setCustomer(null, s.getSeatNr());
+				s.setTaken(false);
+			}
+			}catch (NullPointerException npe){ continue;
+			}
+
+		}
+	}
+
+
 
 	public int getFlightID() {
 		return flightID;
 	}
-		
+
 
 	public void setFlightID(int flightID) {
 		this.flightID = flightID;
@@ -66,7 +92,7 @@ public class Flight {
 		}
 		return nrOfFreeSeatsEconomy;
 	}
-	
+
 	public int getNrOfFreeSeatsFirstClass() {
 		nrOfFreeSeatsFirstClass = 0;
 		for (int i = 0; i < nrOfSeatsFirstClass; i++){
@@ -74,17 +100,17 @@ public class Flight {
 		}
 		return nrOfFreeSeatsFirstClass;
 	}
-	
+
 	public void bookSeatEconomy() {
 		nrOfFreeSeatsEconomy = 0;
 		for (int i = 0; i < nrOfSeatsEconomy; i++){
 			if(!seatListEconomy[i].isTaken()) nrOfFreeSeatsEconomy++;
 		}
-//		seatListEconomy 
-		
-		
+		//		seatListEconomy 
+
+
 	}
-	
+
 
 
 }
