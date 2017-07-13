@@ -4,7 +4,7 @@ import java.util.Date;
 public class Ticket {
 	protected String source;
 	protected String destination;
-
+ 
 	protected String departure;
 	protected String arrival;
  
