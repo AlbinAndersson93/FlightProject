@@ -1,19 +1,34 @@
 //Gabriella
-import java.beans.Customizer;
+
 
 public class Seat {
 
 	boolean isTaken = false;
 	Customer customer;
 	int seatNr;
+	PriceGroup seatType;
 
-	public Seat(Customer customer, int seatNr) {
-		this.customer = customer;
+	public Seat(int seatNr, PriceGroup priceGroup) {
+		seatType=priceGroup;
 		this.seatNr = seatNr;
+	}
+
+	public PriceGroup getSeatType() {
+		return seatType;
 	}
 
 	public boolean isTaken() {
 		return isTaken;
+	}
+
+	@Override
+	public String toString() {
+		return "Seat [isTaken=" + isTaken + ", customer=" + customer + ", seatNr=" + seatNr + ", seatType=" + seatType
+				+ "]";
+	}
+
+	public int getSeatNr() {
+		return seatNr;
 	}
 
 	public void setTaken(boolean isTaken) {
@@ -29,5 +44,15 @@ public class Seat {
 		this.customer = customer;
 		this.seatNr = seatNr;
 	}
+
+	public int bookThisSeat(Customer customer) {
+		isTaken=true;
+		this.customer=customer;
+		return seatNr;
+		
+		
+	}
+	
+	
 
 }

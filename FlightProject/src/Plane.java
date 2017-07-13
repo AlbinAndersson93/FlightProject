@@ -1,10 +1,8 @@
 //Gabriella
-import java.util.ArrayList;
-import java.util.List;
 
 public class Plane {
-	static int seatsEconomy;
-	static int seatsFirstClass;
+	private int seatsEconomy;
+	private int seatsFirstClass;
 	String name;
 	
 	
@@ -15,7 +13,7 @@ public class Plane {
 		this.name = name;
 	}
 		
-	static int totalNumberOfSeats = seatsEconomy + seatsFirstClass;
+	int totalNumberOfSeats = seatsEconomy + seatsFirstClass;
 		
 	public int getTotalNumberOfSeats() {
 		return totalNumberOfSeats;

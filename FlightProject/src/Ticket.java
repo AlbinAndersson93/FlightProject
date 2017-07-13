@@ -1,13 +1,12 @@
 //David
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Ticket {
 	protected String source;
 	protected String destination;
 
-	protected String departure;
-	protected String arrival;
+	protected LocalDateTime departureTime;
+	protected LocalDateTime arrivalTime;
 
 	protected int seat;
 	protected String ticketID;
@@ -20,10 +19,10 @@ public class Ticket {
 
 	public Ticket(Booking booking2) {
 	
-		this.source=booking2.getSource();
-		this.destination=booking2.getDestination();
-		this.departure=booking2.getDeparture();
-		this.arrival=booking2.getArrival();
+		this.source=booking2.getFlight().source;
+		this.destination=booking2.getFlight().destination;
+		this.departureTime=booking2.getFlight().departureTime;
+		this.arrivalTime=booking2.getFlight().arrivalTime;
 		this.customer=booking2.getCustomer();
 		this.seat=booking2.getAssignedSeat();
 		if (booking2.isWantsFood()) mealChar='y';
@@ -43,12 +42,12 @@ public class Ticket {
 		return destination;
 	}
 
-	public String getDeparture() {
-		return departure;
+	public LocalDateTime getDepartureTime() {
+		return departureTime;
 	}
 
-	public String getArrival() {
-		return arrival;
+	public LocalDateTime getArrivalTime() {
+		return arrivalTime;
 	}
 
 	public int getSeat() {
@@ -70,7 +69,7 @@ public class Ticket {
 		return this.getTicketID() + "\n"
 					+ "----------\n"  
 					+ this.source + " --- " + this.destination + " --- " + "\n"  
-					+ this.departure + " --- " + this.arrival + " --- " + "\n";
+					+ this.departureTime + " --- " + this.arrivalTime + " --- " + "\n";
 	}
 
 }

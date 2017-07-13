@@ -18,6 +18,15 @@ public class Flight {
 	int nrOfFreeSeatsFirstClass;
 	Seat[] seatListEconomy;
 	Seat[] seatListFirstClass;
+	ArrayList<Seat> seatArray=new ArrayList<>();
+	{
+		for (int i=0;i<5;i++){
+			seatArray.add(new Seat(i+1, PriceGroup.FirstClass));		
+		}	
+		for (int i=5;i<10;i++){
+			seatArray.add(new Seat(i+1, PriceGroup.Economy));		
+		}
+	}
 	
 	
 	
@@ -35,6 +44,9 @@ public class Flight {
 		
 		seatListEconomy = new Seat[nrOfSeatsEconomy];
 		seatListFirstClass = new Seat[nrOfSeatsFirstClass];
+		
+		
+	
 	}
 
 	public int getFlightID() {
