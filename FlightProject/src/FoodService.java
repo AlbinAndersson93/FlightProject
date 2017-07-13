@@ -32,6 +32,8 @@ public class FoodService {
 	}
 
 	public static void EconomyClassFoodService() {
+		FoodService fs = new FoodService();
+		fs.orderFood();
 		
 	}
 	
