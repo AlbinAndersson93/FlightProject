@@ -1,7 +1,7 @@
 public class Main {
 
 	public static void main(String[] args) {
-		
+		 
 		
 		Customer c1=new Customer("Melvin", "Tummy Street 11", "13232", "Nacka", "123123123");
 		Customer c2=new Customer("Saga", "This Street 11", "13232", "Nacka", "123123123");

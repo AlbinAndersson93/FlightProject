@@ -1,8 +1,8 @@
-
+//Gabriella
 public class FlightPrice {
 	PriceGroup priceGroup;
 	public static int price;
-
+ 
 	public FlightPrice(PriceGroup priceGroup) {
 		this.priceGroup = priceGroup;
 	}

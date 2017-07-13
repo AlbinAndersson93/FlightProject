@@ -1,4 +1,4 @@
-
+//DAVID
 public class Customer {
 
 	protected String name;
@@ -26,7 +26,7 @@ public class Customer {
 	public String getAddress() {
 		return address;
 	}
-
+ 
 
 	public String getZipcode() {
 		return zipcode;

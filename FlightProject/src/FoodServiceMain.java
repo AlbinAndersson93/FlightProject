@@ -1,6 +1,6 @@
 
 public class FoodServiceMain {
-
+ 
 	public static void main(String[] args) {
 		
 		EconomyClassFoods ecoFood = new EconomyClassFoods();

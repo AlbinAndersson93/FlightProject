@@ -58,7 +58,7 @@ public class Booking {
 	public String getDeparture() {
 		return departure;
 	}
-
+ 
 	public String getArrival() {
 		return arrival;
 	}
@@ -71,7 +71,7 @@ public class Booking {
 		return input;
 	}
 
-
+	
 
 	private String destination="Indigo plateu";
 	private String source="Arlanda";

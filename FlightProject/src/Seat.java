@@ -1,30 +1,33 @@
-import java.beans.Customizer;
-
+//Gabriella
 public class Seat {
 
-	boolean isTaken = false;
-	Customer customer;
+	boolean isNotTaken = true;
+	Customer customer = null;
 	int seatNr;
+	PriceGroup priceGroup;
+	int price;
 
-	public Seat(Customer customer, int seatNr) {
-		this.customer = customer;
+ 
+	public Seat(int seatNr, PriceGroup priceGroup) {
 		this.seatNr = seatNr;
+		this.priceGroup = priceGroup;
+		price = FlightPrice.getPrice(priceGroup);
 	}
 
-	public boolean isTaken() {
-		return isTaken;
-	}
-
-	public void setTaken(boolean isTaken) {
-		this.isTaken = isTaken;
+	public boolean isNotTaken() {
+		return isNotTaken;
 	}
 
 	public Customer getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(Customer customer, int seatNr) {
-		isTaken = true;
+	public int getPrice() {
+		return price;
+	}
+
+	public void setSeatCustomer(Customer customer, int seatNr) {
+		isNotTaken = false;
 		this.customer = customer;
 		this.seatNr = seatNr;
 	}

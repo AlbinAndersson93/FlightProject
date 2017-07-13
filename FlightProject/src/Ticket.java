@@ -7,7 +7,7 @@ public class Ticket {
 
 	protected String departure;
 	protected String arrival;
-
+ 
 	protected int seat;
 	protected String ticketID;
 	private Customer customer;
