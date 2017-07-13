@@ -110,7 +110,7 @@ public class Booking {
 			input=in.nextLine();
 			if (input.equalsIgnoreCase("First class")){
 				priceGroup= PriceGroup.FirstClass;
-				ticketPrice+=20000;	//TODO:set to non-permanent
+				ticketPrice+=priceGroup.getPrice();	//TODO:set to non-permanent
 				assignedSeat=firstClassSeat++; //TODO:set to a better list
 				System.out.println("first class it is then. you have seat #"+assignedSeat);
 				break;
@@ -119,7 +119,7 @@ public class Booking {
 
 			else if(input.equalsIgnoreCase("economy")) {
 				priceGroup=PriceGroup.Economy;
-				ticketPrice+=5000;//TODO:set to non-permanent
+				ticketPrice+=priceGroup.getPrice();//TODO:set to non-permanent
 				assignedSeat=economyClassSeat++;//TODO:set to a better list
 				System.out.println("economy class it is then. you have seat #"+assignedSeat);
 				break;

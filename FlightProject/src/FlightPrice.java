@@ -1,4 +1,7 @@
 //Gabriella
+
+
+//Kommer nog inte användas, har lagt över värderna till enum klassen
 public class FlightPrice {
 	PriceGroup priceGroup;
 	public static int price;
