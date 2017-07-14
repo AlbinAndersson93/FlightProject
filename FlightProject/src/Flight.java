@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Flight {
 
- //Test
 	//fields
 	String source;
 	String destination;
