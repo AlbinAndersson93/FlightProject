@@ -1,5 +1,14 @@
 //David
+
+package PlaneAndFlight;
+
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+
+import Food.*;
+import Main.Booking;
+import PersonAndCompanies.Customer;
+import Util.PriceGroup;
 
 public class Ticket {
 	protected String source;
@@ -11,22 +20,25 @@ public class Ticket {
 	protected int seat;
 	protected String ticketID;
 	private Customer customer;
-	private char mealChar; //for ticketID
+	private int mealChar; //for ticketID
 
 	private int priceGroupInt; //for ticketID
 		//change to take values from a booking
+	private ArrayList<FoodItem> orderedFoodList;
+	private int ticketPrice;
 
 
 	public Ticket(Booking booking2) {
 	
-		this.source=booking2.getFlight().source;
-		this.destination=booking2.getFlight().destination;
-		this.departureTime=booking2.getFlight().departureTime;
-		this.arrivalTime=booking2.getFlight().arrivalTime;
+		this.ticketPrice=booking2.getTicketPrice();
+		this.orderedFoodList=booking2.getOrderedFoodList();
+		this.source=booking2.getFlight().getSource();
+		this.destination=booking2.getFlight().getDestination();
+		this.departureTime=booking2.getFlight().getDepartureTime();
+		this.arrivalTime=booking2.getFlight().getArrivalTime();
 		this.customer=booking2.getCustomer();
 		this.seat=booking2.getAssignedSeat();
-		if (booking2.isWantsFood()) mealChar='y';
-		if (!booking2.isWantsFood()) mealChar='n';
+		this.mealChar=booking2.getOrderedFoodList().size();
 		if (booking2.getPriceGroup().equals(PriceGroup.FirstClass)) priceGroupInt=73;
 		if (booking2.getPriceGroup().equals(PriceGroup.Economy)) priceGroupInt=24;
 		this.ticketID = source.substring(0,2)+priceGroupInt+destination.substring(0,2)+customer.getName().substring(0,3)+(int)(Math.random()*20)+mealChar;
@@ -58,18 +70,21 @@ public class Ticket {
 		return ticketID;
 	}
 
+	@Override
+	public String toString() {
+		return "---Ticket---         price: "+ticketPrice+"\n"
+				+ customer.getName()+" || "+ticketID + "\n"
+						+ "From: "+source+" at "+departureTime+"   To: "+destination+" at "+arrivalTime+"\n"
+								+ "# of food items ordered: "+ orderedFoodList.size()+"\n------"; 
+		
+	}
+
 	
 	
 
 	
 	
 	
-	@Override
-	public String toString(){
-		return this.getTicketID() + "\n"
-					+ "----------\n"  
-					+ this.source + " --- " + this.destination + " --- " + "\n"  
-					+ this.departureTime + " --- " + this.arrivalTime + " --- " + "\n";
-	}
+	
 
 }

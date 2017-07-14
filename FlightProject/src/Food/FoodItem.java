@@ -1,4 +1,5 @@
 // Yared
+package Food;
 
 public class FoodItem {
 
