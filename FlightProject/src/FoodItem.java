@@ -1,6 +1,7 @@
+// Yared
 
 public class FoodItem {
- 
+
 	private String name;
 	private double price;
 	
@@ -23,7 +24,11 @@ public class FoodItem {
 	}
 
 	
-	
+	@Override
+	public String toString() {
+//		return super.toString();
+		return name + " " + price;
+	}
 	
 	
 }
