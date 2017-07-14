@@ -18,6 +18,7 @@ public class Main {
 		new Init();
 
 		Flight.printFlights();
+		
 
 		Customer c1=new Customer();
 		

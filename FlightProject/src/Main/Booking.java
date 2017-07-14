@@ -54,11 +54,11 @@ public class Booking {
 			
 			try{
 				flight=Flight.getFlightList().stream().filter(s->s.getFlightID()==Integer.parseInt(input)).findFirst().get();
-				System.out.println("Seats left "+flight.nrOfFreeSeatsLeft);
+				
 				
 				if(flight.nrOfFreeSeatsLeft!=0){
 					this.customer=customer;
-					System.out.println(customer.getName() +" is here to book a flight to "+flight.getDestination()+"."); //test line
+					System.out.println("So you want to book a flight to "+flight.getDestination()+"."); //test line
 					asignSeat();
 					asignMeal();
 					createTicket();
@@ -90,7 +90,7 @@ public class Booking {
 	
 
 	private void asignSeat() {		//Assigning first/economy class and seat from user input
-		System.out.println("Hello "+ customer.getName()+". Do you want to fly in first class or economy class? Enter 'First class' or 'Economy'");
+		System.out.println("Do you want to fly in first class or economy class? Enter 'First class' or 'Economy'");
 		while(true){
 			input=in.nextLine();
 			if (input.equalsIgnoreCase("First class")){
@@ -115,7 +115,7 @@ public class Booking {
 		
 		try{
 			assignedSeat=flight.getSeatArray().stream().filter(s->s.getSeatType().equals(priceGroup)).filter(s->!s.isTaken()).findFirst().get().setSeatCustomer(customer);				
-			System.out.println(priceGroup.toString()+" it is then. you have seat #"+assignedSeat);
+			System.out.println(priceGroup.toString()+" it is then. you'll get seat #"+assignedSeat+".");
 			flight.nrOfFreeSeatsLeft--;
 			ticketPrice+=priceGroup.getPrice();
 		}catch (NoSuchElementException nsee){
@@ -135,7 +135,7 @@ public class Booking {
 
 
 	private void asignMeal(){		//ask if they want meal, then run method for the class they belong to
-		System.out.println(customer.getName()+", do you want to pre-order a meal for your flight? 'yes' or 'no'");
+		System.out.println("Do you want to pre-order a meal for your flight? 'yes' or 'no'");
 		while(true){
 			input=in.nextLine();
 

@@ -49,11 +49,8 @@ public class FoodService {
 	public  void OrderDone(){
 	    foodOrdering = false;
 	    orderList.forEach(food -> System.out.println(food.getName() + " " + food.getPrice() + "(SEK)." ));
-	    System.out.println("***********************************************"
-	    		+ "\nYour TOTAL food order price is: " + totalFoodPrice + "(SEK).");
-	    System.out.println("***********************************************"
-	    		+ "\nWe hope you will enjoy your meal on the flight!\nThank you for flying with us!"
-	    		+ "\n***********************************************");
+	    System.out.println("Your TOTAL food order price is: " + totalFoodPrice + "(SEK).");
+
 	}// Common for Economy & First Class Ends
 	
 	// Economy Class Food Order
@@ -215,9 +212,10 @@ public class FoodService {
 	public  int OrderEconomyClassFood() {
 		
 		FoodMenu.flightMenu();//Prints Food Menu 
-		int input = sc.nextInt();
+		int input =0;
 	
 		while (foodOrdering) {
+			input = sc.nextInt();
 			switch (input){
 			case 1: {
 
@@ -257,10 +255,7 @@ public class FoodService {
 				OrderDone();
 				break;
 			}
-			case 0: {
-				
-				break;
-			}
+
 			
 			default: {
 				System.out.println("Wrong Choice!");
@@ -432,9 +427,11 @@ public class FoodService {
 	public  int OrderFirstClassFood() {
 		
 		FoodMenu.flightMenu();//Prints Food Menu 
-		int input = sc.nextInt();
-	
+		
+		int input=0;
 		while (foodOrdering) {
+			
+			input = sc.nextInt();
 			switch (input){
 			case 1: {
 
@@ -474,10 +471,7 @@ public class FoodService {
 				OrderDone();
 				break;
 			}
-			case 0: {
-				
-				break;
-			}
+
 			
 			default: {
 				System.out.println("Wrong Choice!");
