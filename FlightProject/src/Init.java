@@ -68,6 +68,7 @@ public class Init {
 		flightList.get(63).bookSeat(PriceGroup.Economy, customer1);
 		flightList.get(14).bookSeat(PriceGroup.Economy, customer3);
 
+		
 //
 //		int price1 = FlightPrice.getPrice(PriceGroup.Economy);
 //		int price2 = FlightPrice.getPrice(PriceGroup.FirstClass);
