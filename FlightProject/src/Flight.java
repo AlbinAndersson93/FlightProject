@@ -1,5 +1,6 @@
 //Gabriella
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Flight {
@@ -15,10 +16,10 @@ public class Flight {
 	static Scanner scan = new Scanner(System.in);
 	PriceGroup pg;
 	String nyttVal;
-
+	static ArrayList<Flight> flightList=new ArrayList<>();
 
 	//Constructor
-	public Flight(String source, String destination, LocalDateTime departureTime, LocalDateTime arrivalTime, Plane plane) {
+	public Flight(int iD, String source, String destination, LocalDateTime departureTime, LocalDateTime arrivalTime, Plane plane) {
 
 		this.source = source;
 		this.destination = destination;
@@ -26,8 +27,22 @@ public class Flight {
 		this.arrivalTime = arrivalTime;
 		this.plane = plane;
 		seatList = this.plane.getSeatList();
+		flightList.add(this);
 	}
+	
+	public void removeCustomerFromSeat(Customer customer) {
 
+		for (Seat s:seatList){
+			try{if(s.getCustomer().equals(customer)){
+				s.setCustomer(null);
+				s.setNotTaken(true);
+				System.out.println(s.getCustomer().getName()+" removed from seat.");
+			}
+			}catch (NullPointerException npe){ continue;
+			}
+
+		}
+	}
 
 	public void bookSeat(PriceGroup priceGroup, Customer customer) {
 		int seatNumber = freeSeat(priceGroup);

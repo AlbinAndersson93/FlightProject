@@ -7,7 +7,7 @@ public class Plane {
 	Seat[] seatList;
  
 	public Plane(int seatsEconomy, int seatsFirstClass, String name) {
-
+ 
 		this.seatsEconomy = seatsEconomy;
 		this.seatsFirstClass = seatsFirstClass;
 		this.name = name;
