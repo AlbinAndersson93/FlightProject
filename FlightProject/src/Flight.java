@@ -19,7 +19,7 @@ public class Flight {
 	static ArrayList<Flight> flightList=new ArrayList<>();
 
 	//Constructor
-	public Flight(int iD, String source, String destination, LocalDateTime departureTime, LocalDateTime arrivalTime, Plane plane) {
+	public Flight(String source, String destination, LocalDateTime departureTime, LocalDateTime arrivalTime, Plane plane) {
 
 		this.source = source;
 		this.destination = destination;
