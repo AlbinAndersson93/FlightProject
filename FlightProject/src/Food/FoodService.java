@@ -5,38 +5,44 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
+import Util.PriceGroup;
+
+
 public class FoodService {
 
 	// All Food order Lists are stored here
-	static ArrayList<FoodItem> orderList = new ArrayList<FoodItem>();
+	private  ArrayList<FoodItem> orderList = new ArrayList<FoodItem>();
 
-	public static double totalFoodPrice;
-	static boolean foodOrdering = true;
-	private static PriceGroup priceGroup;
+	public  double totalFoodPrice;
+	 boolean foodOrdering = true;
+	public  ArrayList<FoodItem> getOrderList() {
+		return orderList;
+	}
+	private  PriceGroup priceGroup;
 
-	static Scanner sc = new Scanner(System.in);
+	 Scanner sc = new Scanner(System.in);
 
 
 	// The total price of the food order
-	public static double TotalFoodPrice() {
+	public  double TotalFoodPrice() {
 		totalFoodPrice = orderList.stream().mapToDouble(foodPrice -> foodPrice.getPrice()).sum();
 		System.out.println("Total Food Price" + totalFoodPrice);
 		return totalFoodPrice;
 	}
 
-	public static void FirstClassFoodService() {
+	public  void FirstClassFoodService() {
 		priceGroup = PriceGroup.FirstClass;
-		FoodService.OrderFood();
+		OrderFood();
 	}
 
-	public static void EconomyClassFoodService() {
+	public  void EconomyClassFoodService() {
 		priceGroup = PriceGroup.Economy;
-		FoodService.OrderFood();
+		OrderFood();
 
 	}
 
 	// 
-	public static ArrayList<FoodItem> OrderAppetizer() {
+	public  ArrayList<FoodItem> OrderAppetizer() {
 
 		AbstractFood foodItemList;
 		if (priceGroup.equals(PriceGroup.FirstClass)) {
@@ -68,7 +74,7 @@ public class FoodService {
 		return orderList;
 	}
 
-	public static ArrayList<FoodItem> OrderMainCource() {
+	public  ArrayList<FoodItem> OrderMainCource() {
 		AbstractFood foodItemList;
 		if (priceGroup.equals(PriceGroup.FirstClass)) {
 			foodItemList = new FirstClassFoods();			
@@ -97,7 +103,7 @@ public class FoodService {
 		return orderList;
 	}
 
-	public static ArrayList<FoodItem> OrderKidsMeals() {
+	public  ArrayList<FoodItem> OrderKidsMeals() {
 		AbstractFood foodItemList;
 		if (priceGroup.equals(PriceGroup.FirstClass)) {
 			foodItemList = new FirstClassFoods();			
@@ -126,7 +132,7 @@ public class FoodService {
 		return orderList;
 	}
 
-	public static ArrayList<FoodItem> OrderDesserts() {
+	public  ArrayList<FoodItem> OrderDesserts() {
 		AbstractFood foodItemList;
 		if (priceGroup.equals(PriceGroup.FirstClass)) {
 			foodItemList = new FirstClassFoods();			
@@ -155,7 +161,7 @@ public class FoodService {
 		return orderList;
 	}
 
-	public static ArrayList<FoodItem> OrderDrinks() {
+	public  ArrayList<FoodItem> OrderDrinks() {
 		AbstractFood foodItemList;
 		if (priceGroup.equals(PriceGroup.FirstClass)) {
 			foodItemList = new FirstClassFoods();			
@@ -185,7 +191,7 @@ public class FoodService {
 	}
 
 
-	public static ArrayList<FoodItem> OrderSandwich() {
+	public  ArrayList<FoodItem> OrderSandwich() {
 		AbstractFood foodItemList;
 		if (priceGroup.equals(PriceGroup.FirstClass)) {
 			foodItemList = new FirstClassFoods();			
@@ -214,7 +220,7 @@ public class FoodService {
 		return orderList;
 	}
 
-	public static ArrayList<FoodItem> OrderSnacks() {
+	public  ArrayList<FoodItem> OrderSnacks() {
 		AbstractFood foodItemList;
 		if (priceGroup.equals(PriceGroup.FirstClass)) {
 			foodItemList = new FirstClassFoods();			
@@ -244,7 +250,7 @@ public class FoodService {
 	}
 
 	// 8. Empty Order
-	public static ArrayList<FoodItem> EmptyOrder() {
+	public  ArrayList<FoodItem> EmptyOrder() {
 		orderList.removeAll(orderList);
 		System.out.println("Now your Food Order is EMPTY.");
 		orderList.forEach(food -> System.out.println(food.getName() + " " + food.getPrice() + "(SEK)." ));
@@ -252,17 +258,14 @@ public class FoodService {
 	}
 
 	// 9. Finish! Order 
-	public static void OrderDone(){
+	public  void OrderDone(){
 		foodOrdering = false;
 		orderList.forEach(food -> System.out.println(food.getName() + " " + food.getPrice() + "(SEK)." ));
-		System.out.println("***********************************************"
-				+ "\nYour TOTAL food order price is: " + totalFoodPrice + "(SEK).");
-		System.out.println("***********************************************"
-				+ "\nWe hope you will enjoy your meal on the flight!\nThank you for flying with us!"
-				+ "\n***********************************************");
+		System.out.println("Your TOTAL food order price is: " + totalFoodPrice + "(SEK).");
 	}
-	public static int OrderFood() {
-
+	
+	public int OrderFood() {
+		
 		FoodMenu.flightMenu();//Prints Food Menu 
 		int input = sc.nextInt();
 

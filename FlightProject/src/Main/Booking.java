@@ -50,9 +50,10 @@ public class Booking {
 		System.out.println("Which flight do you want to take?");
 		
 		BOOKING_INPUT_LOOP:while(true){
-			input=in.nextLine();
 			
+			input=in.nextLine();
 			try{
+				
 				flight=Flight.getFlightList().stream().filter(s->s.getFlightID()==Integer.parseInt(input)).findFirst().get();
 				
 				
@@ -60,8 +61,8 @@ public class Booking {
 					this.customer=customer;
 					System.out.println("So you want to book a flight to "+flight.getDestination()+"."); //test line
 					asignSeat();
+					//
 					
-					break;
 				}else{
 					System.out.println("Sorry, that flight is full. Do you want to book a different flight?");
 					while(true){
@@ -77,6 +78,9 @@ public class Booking {
 						}
 					}
 				}
+				
+			}catch (StringIndexOutOfBoundsException sioobe){break;
+				
 			}catch (Exception e){System.out.println("Wrong input");
 			}
 		
@@ -102,7 +106,7 @@ public class Booking {
 				break;
 
 			}
-			else System.out.println("Wrong input");
+			else System.out.println("Wrong input2");
 
 		}
 
@@ -118,7 +122,7 @@ public class Booking {
 			flight.nrOfFreeSeatsLeft--;
 			ticketPrice+=priceGroup.getPrice();
 			asignMeal();
-			createTicket();
+		
 		}catch (NoSuchElementException nsee){
 			System.out.println("No seats left in "+priceGroup.toString()+", do you want to buy a ticket in a different price group instead?");
 			input=in.nextLine();
@@ -148,7 +152,7 @@ public class Booking {
 				if(priceGroup.equals(PriceGroup.FirstClass)){
 					System.out.println("printing first class menu");
 					FoodService fs=new FoodService();
-					fs.OrderFirstClassFood();
+					fs.FirstClassFoodService();
 					
 					orderedFoodList = fs.getOrderList();
 					ticketPrice+=(int)fs.TotalFoodPrice();
@@ -156,7 +160,7 @@ public class Booking {
 				}else{
 					System.out.println("printing economy class menu");
 					FoodService fs=new FoodService();
-					fs.OrderEconomyClassFood();
+					fs.EconomyClassFoodService();
 					orderedFoodList = fs.getOrderList();
 					ticketPrice+=(int)fs.TotalFoodPrice();
 					break;
@@ -168,6 +172,7 @@ public class Booking {
 				System.out.println("Wrong input, please enter 'yes' or 'no'.");
 			}
 		}
+		createTicket();
 	}
 
 	private void createTicket(){
