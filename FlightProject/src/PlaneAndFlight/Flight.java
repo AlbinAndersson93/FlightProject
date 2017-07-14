@@ -108,7 +108,7 @@ public class Flight {
 		Iterator<Map.Entry<Integer, Flight>> itFlight = Init.getFlightList().entrySet().iterator(); 
 		while(itFlight.hasNext()){
 			int key = itFlight.next().getKey();
-			System.out.println("Flight #" +key+" || from "+Init.getFlightList().get(key).getSource() + " to " + Init.getFlightList().get(key).getDestination());
+			System.out.println("Flight #" +key+" || from "+Init.getFlightList().get(key).getSource() + " to " + Init.getFlightList().get(key).getDestination()+" flought by "+Init.getFlightList().get(key).getPlane().getName());
 
 		}
 		System.out.println("");
