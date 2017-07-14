@@ -4,8 +4,9 @@ public class FoodServiceMain {
 
 	public static void main(String[] args) {
 		
-		FoodService fs = new FoodService();
-		fs.orderFood();
+		System.out.println(FoodService.TotalFoodPrice());
+		FoodService.orderFood();
+	
 //		fs.start();
 //		EconomyClassFoods ecoFood = new EconomyClassFoods();
 //		

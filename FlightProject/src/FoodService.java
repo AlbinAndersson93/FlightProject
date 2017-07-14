@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 public class FoodService {
 	
-	ArrayList<FoodItem> orderList = new ArrayList<FoodItem>();
+	static ArrayList<FoodItem> orderList = new ArrayList<FoodItem>();
 
-	public double totalFoodPrice;
+	public static double totalFoodPrice=0;
 	static boolean foodOrdering = true;
 //	public static double runningTotal;
 //	private static double foodItemPrice;
@@ -21,10 +21,11 @@ public class FoodService {
 		
 	}
 	
+	
 	// The total price of the food order
-	public void TotalFoodPrice() {
+	public static double TotalFoodPrice() {
 		totalFoodPrice = orderList.stream().mapToDouble(foodPrice -> foodPrice.getPrice()).sum();
-		System.out.println("Total Food Price: " + totalFoodPrice + "(SEK).");
+		return totalFoodPrice;
 	}
 
 	public static void FirstClassFoodService() {
@@ -37,7 +38,7 @@ public class FoodService {
 		
 	}
 	
-	public ArrayList<FoodItem> OrderEcoAppetizer() {
+	public static ArrayList<FoodItem> OrderEcoAppetizer() {
 		EconomyClassFoods foodItemList = new EconomyClassFoods();
 		System.out.println("Choose the number from the list");
 		foodItemList.appetizer.stream().forEach(x -> System.out.println(foodItemList.appetizer.indexOf(x) + ": " + x));
@@ -59,7 +60,7 @@ public class FoodService {
 	    }
 		return orderList;
 	}
-	public ArrayList<FoodItem> OrderEcoMainCource() {
+	public static ArrayList<FoodItem> OrderEcoMainCource() {
 		EconomyClassFoods foodItemList = new EconomyClassFoods();
 		System.out.println("Choose the number from the list");
 		foodItemList.mainCourse.stream().forEach(x -> System.out.println(foodItemList.mainCourse.indexOf(x) + ": " + x));
@@ -81,7 +82,7 @@ public class FoodService {
 		return orderList;
 	}
 	
-	public ArrayList<FoodItem> OrderEcoKidsMeals() {
+	public static ArrayList<FoodItem> OrderEcoKidsMeals() {
 		EconomyClassFoods foodItemList = new EconomyClassFoods();
 		System.out.println("Choose the number from the list");
 		foodItemList.kidsMeals.stream().forEach(x -> System.out.println(foodItemList.kidsMeals.indexOf(x) + ": " + x));
@@ -103,7 +104,7 @@ public class FoodService {
 		return orderList;
 	}
 	
-	public ArrayList<FoodItem> OrderEcoDesserts() {
+	public static ArrayList<FoodItem> OrderEcoDesserts() {
 		EconomyClassFoods foodItemList = new EconomyClassFoods();
 		System.out.println("Choose the number from the list");
 		foodItemList.desserts.stream().forEach(x -> System.out.println(foodItemList.desserts.indexOf(x) + ": " + x));
@@ -125,7 +126,7 @@ public class FoodService {
 		return orderList;
 	}
 	
-	public ArrayList<FoodItem> OrderEcoDrinks() {
+	public static ArrayList<FoodItem> OrderEcoDrinks() {
 		EconomyClassFoods foodItemList = new EconomyClassFoods();
 		System.out.println("Choose the number from the list");
 		foodItemList.drinks.stream().forEach(x -> System.out.println(foodItemList.drinks.indexOf(x) + ": " + x));
@@ -148,7 +149,7 @@ public class FoodService {
 	}
 	
 	
-	public ArrayList<FoodItem> OrderEcoSandwich() {
+	public static ArrayList<FoodItem> OrderEcoSandwich() {
 		EconomyClassFoods foodItemList = new EconomyClassFoods();
 		System.out.println("Choose the number from the list");
 		foodItemList.sandwich.stream().forEach(x -> System.out.println(foodItemList.sandwich.indexOf(x) + ": " + x));
@@ -170,7 +171,7 @@ public class FoodService {
 		return orderList;
 	}
 	
-	public ArrayList<FoodItem> OrderEcoSnacks() {
+	public static ArrayList<FoodItem> OrderEcoSnacks() {
 		EconomyClassFoods foodItemList = new EconomyClassFoods();
 		System.out.println("Choose the number from the list");
 		foodItemList.snacks.stream().forEach(x -> System.out.println(foodItemList.snacks.indexOf(x) + ": " + x));
@@ -192,7 +193,7 @@ public class FoodService {
 		return orderList;
 	}
 	
-	public ArrayList<FoodItem> EmptyOrder() {
+	public static ArrayList<FoodItem> EmptyOrder() {
 		orderList.removeAll(orderList);
 		System.out.println("Now your Food Order is EMPTY.");
 		orderList.forEach(food -> System.out.println(food.getName() + " " + food.getPrice() + "(SEK)." ));
@@ -204,7 +205,7 @@ public class FoodService {
 	}
 	
 	// 9. Finish! Order 
-	public void OrderEcoDone(){
+	public static void OrderEcoDone(){
 	    foodOrdering = false;
 	    orderList.forEach(food -> System.out.println(food.getName() + " " + food.getPrice() + "(SEK)." ));
 	    System.out.println("***********************************************"
@@ -214,7 +215,7 @@ public class FoodService {
 	    		+ "\n***********************************************");
 	}
 	
-	public void orderFood() {
+	public static int orderFood() {
 		
 		FoodMenu.flightMenu();//Prints Food Menu 
 		int input = sc.nextInt();
@@ -270,6 +271,7 @@ public class FoodService {
 			}
 			}
 		}
+		return input;
 		
 	}
 }

@@ -18,6 +18,14 @@ public class Seat {
 		return isNotTaken;
 	}
 
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public void setNotTaken(boolean isNotTaken) {
+		this.isNotTaken = isNotTaken;
+	}
+
 	public Customer getCustomer() {
 		return customer;
 	}

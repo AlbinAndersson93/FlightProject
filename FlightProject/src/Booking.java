@@ -1,4 +1,7 @@
 //Albin
+
+import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 //take customer, check if economy/firstclass. asign seat at random, add price, check if wants meal,
 public class Booking {
@@ -6,16 +9,23 @@ public class Booking {
 	Customer customer;
 
 
+	private ArrayList<FoodItem> bookedFood;
 	private PriceGroup priceGroup;
-	private static int firstClassSeat=1;
-	private static int economyClassSeat=6;
+
 	private boolean wantsFood=false;
-	private int ticketPrice=90;
+	private int ticketPrice=0;
+
+
+
+	private Flight flight; 
+
+
+	Scanner in=new Scanner(System.in);
+	String input="";
 
 	private int assignedSeat;
 
 	//fields to get from flight
-	private String bookingID="ABC123";
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -24,44 +34,39 @@ public class Booking {
 		return priceGroup;
 	}
 
-	public static int getFirstClassSeat() {
-		return firstClassSeat;
-	}
 
-	public static int getEconomyClassSeat() {
-		return economyClassSeat;
-	}
 
 	public int getTicketPrice() {
 		return ticketPrice;
 	}
 
-	public String getBookingID() {
-		return bookingID;
+
+	
+
+
+//	public static void printFlights(){
+//		System.out.println("Currently we have the following flights planed:");
+//		Flight.flightList.forEach(s->{System.out.println(s.toString());});
+//
+//	}
+
+
+
+	public static void printFlights(){
+		System.out.println("Currently we have the following flights planed:");
+		Flight.flightList.forEach(s->s.toString());
+		}
+
+	
+
+
+
+	public Flight getFlight() {
+		return flight;
 	}
 
-	public String getDestination() {
-		return destination;
-	}
-
-	public String getSource() {
-		return source;
-	}
-
-	public String getFlightID() {
-		return flightID;
-	}
-
-	public String getPlane() {
-		return plane;
-	}
-
-	public String getDeparture() {
-		return departure;
-	}
- 
-	public String getArrival() {
-		return arrival;
+	public void setFlight(Flight flight) {
+		this.flight = flight;
 	}
 
 	public Scanner getIn() {
@@ -72,79 +77,100 @@ public class Booking {
 		return input;
 	}
 
-	
-
-	private String destination="Indigo plateu";
-	private String source="Arlanda";
-	private String flightID="FlightID1";
-	private String plane="Blue Bella";
-	private String departure="8:00";
-	private String arrival="13:25";
-	
-	
-	
-	Scanner in=new Scanner(System.in);
-	String input="";
 
 
-	
 
 
-	
 
 
-	public Booking(Customer customer) {
+
+
+
+
+	public Booking(Customer customer, Flight flight){
+//		System.out.println("Which flight do you want to take?");
+//		input=in.nextLine();
+//		flight=Flight.flightList.stream().filter(s->s.getFlightID()==Integer.parseInt(input)).findFirst().get();
+
+
+		
 		this.customer=customer;
-		System.out.println(customer.getName() +" is here to book a flight.");
+		this.flight=flight;
+		System.out.println(customer.getName() +" is here to book a flight to "+flight.destination+".");
 		asignSeat();
 		asignMeal();
 		createTicket();
-		
 
 	}
 
+
 	private void asignSeat() {		//Assigning first/economy class and seat from user input
 		System.out.println("Hello "+ customer.getName()+". Do you want to fly in first class or economy class? Enter 'First class' or 'Economy'");
-
 		while(true){
 			input=in.nextLine();
 			if (input.equalsIgnoreCase("First class")){
-				priceGroup= PriceGroup.FirstClass;
-				ticketPrice+=20000;	//TODO:set to non-permanent
-				assignedSeat=firstClassSeat++; //TODO:set to a better list
-				System.out.println("first class it is then. you have seat #"+assignedSeat);
+				priceGroup=priceGroup.FirstClass;
+				flight.bookSeat(priceGroup.FirstClass, customer);		
+				ticketPrice+= priceGroup.getPrice();
 				break;
-
 			}
 
 			else if(input.equalsIgnoreCase("economy")) {
-				priceGroup=PriceGroup.Economy;
-				ticketPrice+=5000;//TODO:set to non-permanent
-				assignedSeat=economyClassSeat++;//TODO:set to a better list
-				System.out.println("economy class it is then. you have seat #"+assignedSeat);
+				priceGroup=priceGroup.Economy;
+				flight.bookSeat(PriceGroup.Economy, customer);
+				ticketPrice+= priceGroup.getPrice();
 				break;
+
 			}
 			else System.out.println("Wrong input");
 
 		}
+
 	}
 
-	
+//	private void bookSeat(PriceGroup priceGroup){
+//		this.priceGroup=priceGroup;
+//		ticketPrice+=priceGroup.getPrice();
+//		try{
+//			assignedSeat=flight.seatArray.stream().filter(s->s.getSeatType().equals(priceGroup))
+//					.filter(s->!s.isTaken()).findFirst().get().bookThisSeat(customer);				
+//			System.out.println(priceGroup.toString()+" it is then. you have seat #"+assignedSeat);
+//		}catch (NoSuchElementException nsee){
+//			System.out.println("No seats left in "+priceGroup.toString()+", do you want to buy a ticket in a different price group instead?");
+//			input=in.nextLine();
+//			if (input.equals("yes")){
+//				if (priceGroup.equals(PriceGroup.Economy)){
+//					bookSeat(PriceGroup.FirstClass);
+//				}else{
+//					bookSeat(PriceGroup.Economy);
+//				}
+//			}else{}
+//
+//		}
+//	}
+
 
 
 	private void asignMeal(){		//ask if they want meal, then run method for the class they belong to
 		System.out.println(customer.getName()+", do you want to pre-order a meal for your flight? 'yes' or 'no'");
 		while(true){
 			input=in.nextLine();
+
 			if(input.equalsIgnoreCase("yes") ) {
 				this.wantsFood=true;
 				if(priceGroup.equals(PriceGroup.FirstClass)){
 					System.out.println("printing first class menu");
-					FoodService.FirstClassFoodService();
+					
+					
+					
+//					FoodService.FirstClassFoodService();
 					break;
 				}else{
 					System.out.println("printing economy class menu");
 					FoodService.EconomyClassFoodService();
+					ticketPrice+=FoodService.TotalFoodPrice();
+					bookedFood=FoodService.orderList;
+					System.out.println(bookedFood);
 					break;
 				}
 			}else if(input.equalsIgnoreCase("no")){
@@ -159,12 +185,12 @@ public class Booking {
 	private void createTicket(){
 		System.out.println("new ticket added to customer for "+customer.getName());
 		Ticket newTicket=new Ticket(this);
-//		Ticket newTicket=new Ticket(customer,destination,source,assignedSeat,customer.getName(), bookingID);
+
 		customer.setTicket(newTicket);
 		System.out.println("ticket ID="+customer.ticket.getTicketID());
 		Company.addToCompanyIncome(ticketPrice);
 		System.out.println("company now has "+Company.getCompanyIncome()+" money.");
-		
+
 	}
 
 	public void setWantsFood(boolean b) {
