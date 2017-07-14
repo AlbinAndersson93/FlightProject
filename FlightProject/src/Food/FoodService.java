@@ -26,7 +26,7 @@ public class FoodService {
 	// The total price of the food order
 	public double TotalFoodPrice() {
 		totalFoodPrice = orderList.stream().mapToDouble(foodPrice -> foodPrice.getPrice()).sum();
-		System.out.println("Total Food Price" + totalFoodPrice);
+		System.out.println("Total Food Price: " + totalFoodPrice + "(SEK).");
 		return totalFoodPrice;
 	}
 
@@ -261,7 +261,6 @@ public class FoodService {
 	public void OrderDone(){
 		foodOrdering = false;
 		orderList.forEach(food -> System.out.println(food.getName() + " " + food.getPrice() + "(SEK)." ));
-		System.out.println("Your TOTAL food order price is: " + totalFoodPrice + "(SEK).");
 	}
 	
 	public int OrderFood() {
