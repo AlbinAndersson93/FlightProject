@@ -60,8 +60,7 @@ public class Booking {
 					this.customer=customer;
 					System.out.println("So you want to book a flight to "+flight.getDestination()+"."); //test line
 					asignSeat();
-					asignMeal();
-					createTicket();
+					
 					break;
 				}else{
 					System.out.println("Sorry, that flight is full. Do you want to book a different flight?");
@@ -118,6 +117,8 @@ public class Booking {
 			System.out.println(priceGroup.toString()+" it is then. you'll get seat #"+assignedSeat+".");
 			flight.nrOfFreeSeatsLeft--;
 			ticketPrice+=priceGroup.getPrice();
+			asignMeal();
+			createTicket();
 		}catch (NoSuchElementException nsee){
 			System.out.println("No seats left in "+priceGroup.toString()+", do you want to buy a ticket in a different price group instead?");
 			input=in.nextLine();
@@ -127,7 +128,10 @@ public class Booking {
 				}else{
 					bookSeat(PriceGroup.Economy);
 				}
-			}else{}
+			}else{
+				System.out.println("Then no flight for you! Mohahaha!");
+				
+				}
 
 		}
 	}
