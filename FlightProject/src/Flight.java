@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Flight {
 
- 
+ //Test
 	//fields
 	String source;
 	String destination;
@@ -35,7 +35,8 @@ public class Flight {
 
 		if (seatNumber > 0) {
 			seatList[seatNumber-1].setSeatCustomer(customer, seatNumber);
-			System.out.println("Nu bokas plats " + seatList[seatNumber-1].seatNr + " i " + seatList[seatNumber-1].priceGroup +"/" + plane.name + " till kund " + seatList[seatNumber-1].customer.name ); 
+			System.out.println("Nu bokas plats " + seatList[seatNumber-1].seatNr + " i " + seatList[seatNumber-1].priceGroup +"/" + plane.name + " till kund " + seatList[seatNumber-1].customer.name );
+			System.out.println("Pris: " + seatList[seatNumber-1].getPrice() + "SEK");
 		}
 		else {
 			System.out.println("There are no free seats in " + priceGroup + " on this flight " + plane.name);
