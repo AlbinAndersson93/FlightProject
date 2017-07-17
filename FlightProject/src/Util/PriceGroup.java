@@ -1,4 +1,4 @@
-//Gabriella
+
 package Util;
 public enum PriceGroup {
 	Economy, FirstClass;
