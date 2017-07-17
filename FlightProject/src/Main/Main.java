@@ -14,7 +14,7 @@ public class Main {
 	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 
-
+		System.out.println("Wec");
 		new Init();
 
 		Flight.printFlights();
