@@ -24,8 +24,8 @@ public class Ticket {
 
 	private int priceGroupInt; //for ticketID
 		//change to take values from a booking
-	private int ticketPrice;
 	private ArrayList<FoodItem> orderedFoodList;
+	private int ticketPrice;
 
 
 	public Ticket(Booking booking2) {

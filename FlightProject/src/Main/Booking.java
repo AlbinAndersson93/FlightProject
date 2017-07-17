@@ -50,7 +50,7 @@ public class Booking {
 		System.out.println("Which flight do you want to take?");
 		
 		BOOKING_INPUT_LOOP:while(true){
-			
+			ticketPrice=0;
 			input=in.nextLine();
 			try{
 				
@@ -61,6 +61,7 @@ public class Booking {
 					this.customer=customer;
 					System.out.println("So you want to book a flight to "+flight.getDestination()+"."); //test line
 					asignSeat();
+					break;
 					//
 					
 				}else{
@@ -78,7 +79,6 @@ public class Booking {
 						}
 					}
 				}
-				
 			}catch (StringIndexOutOfBoundsException sioobe){break;
 				
 			}catch (Exception e){System.out.println("Wrong input");
@@ -122,7 +122,7 @@ public class Booking {
 			flight.nrOfFreeSeatsLeft--;
 			ticketPrice+=priceGroup.getPrice();
 			asignMeal();
-		
+			createTicket();
 		}catch (NoSuchElementException nsee){
 			System.out.println("No seats left in "+priceGroup.toString()+", do you want to buy a ticket in a different price group instead?");
 			input=in.nextLine();
@@ -172,7 +172,6 @@ public class Booking {
 				System.out.println("Wrong input, please enter 'yes' or 'no'.");
 			}
 		}
-		createTicket();
 	}
 
 	private void createTicket(){

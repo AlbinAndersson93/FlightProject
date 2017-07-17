@@ -7,7 +7,7 @@ import PersonAndCompanies.Company;
 import PersonAndCompanies.Customer;
 import PlaneAndFlight.Flight;
 import Util.Init;
-import Util.PriceGroup;
+
 
 //Albin
 public class Main {
@@ -22,12 +22,21 @@ public class Main {
 
 		Customer c1=new Customer();
 		
-		while(true){
+		MAIN_LOOP:while(true){
 			new Booking(c1);
 			System.out.println("Du you want to book another flight?");
-			if (new Scanner(System.in).nextLine().equalsIgnoreCase("yes")) continue;
-			System.out.println("Thank you for choosing Lexicon Flights AB, please come again.");
-			break;
+			
+			while(true){
+				String input= new Scanner(System.in).nextLine();
+				if (input.equalsIgnoreCase("yes")) continue;
+				else if(input.equalsIgnoreCase("no")){
+					System.out.println("Thank you for choosing Lexicon Flights AB, please come again.");
+					break MAIN_LOOP;
+				}else{
+					System.out.println("I don't understand. Pleast answer with yes or no.");
+				}
+				
+			}
 		}
 		Company.printCompanyIncome();
 		

@@ -263,7 +263,7 @@ public class FoodService {
 		orderList.forEach(food -> System.out.println(food.getName() + " " + food.getPrice() + "(SEK)." ));
 		System.out.println("Your TOTAL food order price is: " + totalFoodPrice + "(SEK).");
 	}
-	
+		
 	public int OrderFood() {
 		
 		FoodMenu.flightMenu();//Prints Food Menu 
