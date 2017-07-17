@@ -1,5 +1,4 @@
 // Yared
-package Food;
 
 public class FoodItem {
 
@@ -27,6 +26,7 @@ public class FoodItem {
 	
 	@Override
 	public String toString() {
+//		return super.toString();
 		return name + " " + price;
 	}
 	

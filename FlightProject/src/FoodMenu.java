@@ -1,7 +1,5 @@
 // Yared
 
-package Food;
-
 public class FoodMenu {
 
 	public static void flightMenu() {

@@ -104,13 +104,14 @@ public class Flight {
 
 	public static void printFlights(){
 		
-		System.out.println("Currently we have the following flights planed:");
+		System.out.println("Currently we have the following flights planed:\n--------------------------------------");
 		Iterator<Map.Entry<Integer, Flight>> itFlight = Init.getFlightList().entrySet().iterator(); 
 		while(itFlight.hasNext()){
 			int key = itFlight.next().getKey();
-			System.out.println("Flyg: " +key+" from "+Init.getFlightList().get(key).getSource() + " to " + Init.getFlightList().get(key).getDestination());
+			System.out.println("Flight #" +key+" || from "+Init.getFlightList().get(key).getSource() + " to " + Init.getFlightList().get(key).getDestination()+" flought by "+Init.getFlightList().get(key).getPlane().getName());
 
 		}
+		System.out.println("");
 	}
 	public void removeCustomerFromSeat(Customer customer) {
 
