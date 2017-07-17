@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import Food.*;
 import Main.Booking;
 import PersonAndCompanies.Customer;
+import Util.Logger;
 import Util.PriceGroup;
 
 public class Ticket {
@@ -43,6 +44,9 @@ public class Ticket {
 		if (booking2.getPriceGroup().equals(PriceGroup.Economy)) priceGroupInt=24;
 		this.ticketID = source.substring(0,2)+priceGroupInt+destination.substring(0,2)+customer.getName().substring(0,3)+(int)(Math.random()*20)+mealChar;
 		ticketID=ticketID.toUpperCase();
+		Logger.sendToLog("Ticketdata", ticketID);
+		
+		
 		
 	}
 
